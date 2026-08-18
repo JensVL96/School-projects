@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Remove Ingredient {% endblock %}
+{% block page_title %} Remove ingredient {% endblock %}
+
+{% if fridge %}
+    <ul>
+    {% for item in fridge %}
+        <li><form action="{% url 'remove_ingredient' item.id %}" method="post">{% csrf_token %}{{ item }}
+            <button>Delete</button>
+        </form></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No ingredients available.</p>
+{% endif %}
+

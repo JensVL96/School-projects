@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Recipe {% endblock %}	
+{% block page_title %} {{ recipe.name }} {% endblock %}
+
+{% block content %}
+<h1> {{ recipe.name | capfirst }} </h1>
+{% for ingredient in ingredients %}
+    <li> {{ ingredient }} </li>
+    {{ recipe.instructions }}
+	<p>Author: {{ recipe.author }} </p>
+{% endfor %}
+{% endblock %}
+
