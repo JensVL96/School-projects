@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="transportation" nsURI="platform:/plugin/tdt4250.transportation/model/transportation.ecore"
+    nsPrefix="transportation">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="validationDelegates" value="http://www.eclipse.org/acceleo/query/1.0"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Vehicle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" upperBound="-1"
+        eType="#//VehicleRoute" containment="true" eOpposite="#//VehicleRoute/vehicle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VehicleRoute">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="noOverweight planIncludesGoodsOriginAndDestination actualRouteIncreasingTimestamps"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/acceleo/query/1.0">
+      <details key="noOverweight" value="self.goods.weight->sum() &lt;= self.vehicle.capacity"/>
+      <details key="planIncludesGoodsOriginAndDestination" value="self.plan->includesAll(self.goods.origin->union(self.goods.destination))"/>
+    </eAnnotations>
+    <eOperations name="receiveTrackingInfo">
+      <eParameters name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eParameters name="longitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goods" upperBound="-1"
+        eType="#//Goods" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plan" upperBound="-1" eType="#//GeoLocation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actualRoute" upperBound="-1"
+        eType="#//TrackingEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vehicle" eType="#//Vehicle"
+        eOpposite="#//Vehicle/routes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalWeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Goods">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//GeoLocation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" eType="#//GeoLocation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoLocation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="geoLoc" eType="#//EGeoLoc"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrackingEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//GeoLocation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transportation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vehicles" upperBound="-1"
+        eType="#//Vehicle" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" eType="#//GeoLocation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoLocations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="#//GeoLocation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="EGeoLoc" instanceClassName="tdt4250.transportation.util.GeoLoc"/>
+</ecore:EPackage>

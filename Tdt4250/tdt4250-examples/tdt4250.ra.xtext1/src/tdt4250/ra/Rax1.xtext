@@ -1,0 +1,26 @@
+grammar tdt4250.ra.Rax1 with org.eclipse.xtext.common.Terminals
+
+generate rax1 "platform:/plugin/tdt4250.ra.xtext1"
+
+Department:
+	shortName = ID '-' name = STRING
+	'Persons:'
+		(persons += Person)*
+	'Courses:'
+		(courses += Course)*
+;
+
+NameOrString: (ID | STRING);
+
+Person:
+	name = NameOrString
+;
+
+Course:
+	code = ID '-' name = NameOrString ':'
+	((allocations += ResourceAllocation) (',' (allocations += ResourceAllocation))*)?
+;
+
+ResourceAllocation:
+	person = [Person | NameOrString] percentage = INT '%'
+;

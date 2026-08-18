@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Built-By: genie.acceleo
+Created-By: Apache Maven
+Build-Jdk: 1.8.0_202
+
+Name: epl-v10.html
+SHA-256-Digest: bfZTK5LN15EseTDjwHyfLbBfEqNWEMGdt+oFKsrN0B4=
+
+Name: feature.xml
+SHA-256-Digest: 0H77W8nCQkM25O1vB+5WZrFNKzdiorza7KuU2p5n12s=
+
+Name: feature.properties
+SHA-256-Digest: 8QKqd1qMhvje3lE8+0H/tKCveMkV9ofc/gyqCdEPWqU=
+
+Name: license.html
+SHA-256-Digest: ZPcWT+RA2U0NZV/Hr4/R34K2EI57/1SEd6GAKmcYeg0=
+

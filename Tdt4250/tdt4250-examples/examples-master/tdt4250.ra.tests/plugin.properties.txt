@@ -1,0 +1,4 @@
+#
+
+pluginName = no.tdt4250.2019.model Tests
+providerName = www.example.org

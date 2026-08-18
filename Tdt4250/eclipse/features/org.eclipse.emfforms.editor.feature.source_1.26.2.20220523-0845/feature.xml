@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.emfforms.editor.feature.source" version="1.26.2.20220523-0845" plugin="org.eclipse.emfforms.editor" label="EMF Forms Ecore Editor incl. Sources" provider-name="%providerName">
+  <description>
+      %description
+   </description>
+  <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+  <license url="%licenseURL">
+      %license
+   </license>
+  <includes id="org.eclipse.emfforms.editor.feature" version="1.26.2.20220523-0845"/>
+  <plugin id="org.eclipse.emfforms.editor.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.editor.ecore.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.editor.genmodel.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.swt.treemasterdetail.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+</feature>

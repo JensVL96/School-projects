@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete Account {% endblock %}
+{% block page_title %} Delete account {% endblock %}
+
+
+{% block content %}
+{% if delete_done %}
+    Account deleted successfully.
+{% else %}
+   <form action="" method="post">
+	   {% csrf_token %}
+	   <input type="submit" name="delete_confirm" value="Delete account"></input>
+   </form>
+{% endif %}
+{% endblock %}

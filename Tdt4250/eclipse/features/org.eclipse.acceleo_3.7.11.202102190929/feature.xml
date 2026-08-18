@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2008, 2013 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<feature
+      id="org.eclipse.acceleo"
+      label="%featureName"
+      version="3.7.11.202102190929"
+      provider-name="%providerName"
+      plugin="org.eclipse.acceleo.common">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.acceleo.engine"
+         download-size="204"
+         install-size="455"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.ide.ui"
+         download-size="1352"
+         install-size="3243"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.model"
+         download-size="161"
+         install-size="397"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.parser"
+         download-size="361"
+         install-size="832"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.common"
+         download-size="102"
+         install-size="201"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.common.ide"
+         download-size="40"
+         install-size="79"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.doc"
+         download-size="3009"
+         install-size="3763"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.compatibility"
+         download-size="188"
+         install-size="437"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.compatibility.ui"
+         download-size="132"
+         install-size="2242"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.model.edit"
+         download-size="106"
+         install-size="227"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.profiler"
+         download-size="37"
+         install-size="73"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.profiler.edit"
+         download-size="26"
+         install-size="50"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.profiler.editor"
+         download-size="33"
+         install-size="55"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.traceability"
+         download-size="68"
+         install-size="157"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.traceability.model"
+         download-size="93"
+         install-size="208"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.common.ui"
+         download-size="55"
+         install-size="78"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.acceleo.ui.interpreter"
+         download-size="172"
+         install-size="338"
+         version="3.7.11.202102190929"
+         unpack="false"/>
+
+</feature>

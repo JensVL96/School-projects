@@ -1,0 +1,39 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.5.0
+Build-Jdk-Spec: 11
+
+Name: about.html
+SHA-256-Digest: ZfK6xNVxSBRSyX9KoawZVQHhNUW3JHWBYHU1gqQSUs4=
+
+Name: rootfiles/epl-2.0.html
+SHA-256-Digest: koxKavfpz4JYnlYPmP+7at5zhbWf7Iy07zamu5HPcBg=
+
+Name: epl-2.0.html
+SHA-256-Digest: koxKavfpz4JYnlYPmP+7at5zhbWf7Iy07zamu5HPcBg=
+
+Name: rootfiles/about.html
+SHA-256-Digest: ZfK6xNVxSBRSyX9KoawZVQHhNUW3JHWBYHU1gqQSUs4=
+
+Name: copyright.txt
+SHA-256-Digest: qKSffUQGfVXaXCkmE5UmZ262B4Dpt3UrB/JMpmEaTSA=
+
+Name: META-INF/maven/org.eclipse.emf.ecp/org.eclipse.emfforms.view.annot
+ ation.feature/pom.xml
+SHA-256-Digest: Hu63kjrjozthiz9xmx6tQt1orl0uwIhaQXJexVkGzP0=
+
+Name: feature.xml
+SHA-256-Digest: 2+HIZdSHVzLhx+6QaLm58tRri7R96uki5p/7daAzv2s=
+
+Name: eclipse_update_120.jpg
+SHA-256-Digest: Hz0atd2kr+i4cvgLVlm8vrN9olKs5NgxwdDxTuA9N2k=
+
+Name: feature.properties
+SHA-256-Digest: WLPXjW9OrO0dlJV410JjrKgvhgOny3rNoaFNPoN22FQ=
+
+Name: META-INF/maven/org.eclipse.emf.ecp/org.eclipse.emfforms.view.annot
+ ation.feature/pom.properties
+SHA-256-Digest: 3DVGP5jDP+NjN4xHvvz4ZV+MGLmGeLP/45EWjhc4zqw=
+
+Name: license.html
+SHA-256-Digest: X315zLynvdLZ4DaYSopgxruQUUEadA3FOPNviC+YO24=
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.ecp.view.label.feature"
+      label="EMF Forms Label Model"
+      version="1.26.2.20220523-0845"
+      provider-name="Eclipse Modeling Project"
+      plugin="org.eclipse.emf.ecp.view.label.model"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.label.model"
+         download-size="35"
+         install-size="66"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.label.model.edit"
+         download-size="25"
+         install-size="39"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.label.ui.swt"
+         download-size="19"
+         install-size="31"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+</feature>

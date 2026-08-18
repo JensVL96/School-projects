@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.emf.ecp.emfforms.idetooling.feature.source" version="1.26.2.20220523-0845" label="EMF Forms IDE Tooling incl. Sources" provider-name="Eclipse Modeling Project">
+  <description>
+      %description
+   </description>
+  <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+  <license url="%licenseURL">
+      %license
+   </license>
+  <includes id="org.eclipse.emf.ecp.emfforms.idetooling.feature" version="1.26.2.20220523-0845"/>
+  <includes id="org.eclipse.emf.ecp.view.model.editor.feature.source" version="1.26.2.20220523-0845"/>
+  <includes id="org.eclipse.emf.ecp.view.model.controls.feature.source" version="1.26.2.20220523-0845"/>
+  <includes id="org.eclipse.emf.ecp.view.validation.initial.feature.source" version="1.26.2.20220523-0845"/>
+  <plugin id="org.eclipse.emf.ecp.ide.util.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.model.preview.common.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.model.preview.e3.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.model.project.installer.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.ide.editor.viewmodel.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.ide.editor.view.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.ide.view.service.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.makeithappen.wizards.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.template.tooling.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.editor.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.ide.editor.view.templatebridge.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.coffee.wizards.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.example.common.wizards.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.builder.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.viewtemplate.builder.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.view.multisegment.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.view.segments.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.view.indexsegment.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.view.mappingsegment.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emfforms.ide.preferences.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+</feature>

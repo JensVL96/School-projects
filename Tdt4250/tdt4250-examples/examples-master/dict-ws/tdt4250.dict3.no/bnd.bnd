@@ -1,0 +1,12 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+-baseline: *
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	tdt4250.dict3.api;version=latest,\
+	osgi.core,\
+	osgi.cmpn,\
+	tdt4250.dict3.util;version=latest
+
+javac.source: 1.8
+javac.target: 1.8

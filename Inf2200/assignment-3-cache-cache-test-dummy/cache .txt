@@ -1,0 +1,7 @@
+cache - "start with" random to get it done quickly
+
+start by implementing memory functions
+
+first create a log file over memory accesses using valgrind on your benchmarks
+convert to binary using traceconverter.py
+run the cache simulator using the trace output

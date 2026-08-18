@@ -1,0 +1,3 @@
+pluginName = tdt4250.ra.diagram
+providerName = Eclipse Modeling Project
+viewpointName = MyViewpoint

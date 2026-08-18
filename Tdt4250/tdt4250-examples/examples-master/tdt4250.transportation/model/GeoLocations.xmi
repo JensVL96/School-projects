@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transportation:GeoLocations xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:transportation="platform:/plugin/tdt4250.transportation/model/transportation.ecore" xsi:schemaLocation="platform:/plugin/tdt4250.transportation/model/transportation.ecore transportation.ecore">
+  <locations name="Trondheim" geoLoc="10.395053 63.430515"/>
+  <locations name="Oslo" geoLoc="10.752245 59.913868"/>
+  <locations name="Elverum" geoLoc="11.56694 60.88138"/>
+</transportation:GeoLocations>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment1:Semester
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:assignment1="platform:/resource/Assignment1/model/assignment1.ecore">
+  <season>Autumn</season>
+  <Year>1st</Year>
+</assignment1:Semester>

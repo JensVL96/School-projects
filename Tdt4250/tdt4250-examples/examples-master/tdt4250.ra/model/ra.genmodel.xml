@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tdt4250.ra/src" modelPluginID="tdt4250.ra" modelName="Ra"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true"
+    oSGiCompatible="true">
+  <foreignModel>ra.ecore</foreignModel>
+  <genPackages prefix="Ra" basePackage="tdt4250" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="ra.ecore#/">
+    <genClasses ecoreClass="ra.ecore#//Department">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Department/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Department/shortName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ra.ecore#//Department/staff"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ra.ecore#//Department/courses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ra.ecore#//Department/resourceAllocations"/>
+      <genOperations ecoreOperation="ra.ecore#//Department/allocateStaffToCourse">
+        <genParameters ecoreParameter="ra.ecore#//Department/allocateStaffToCourse/person"/>
+        <genParameters ecoreParameter="ra.ecore#//Department/allocateStaffToCourse/course"/>
+        <genParameters ecoreParameter="ra.ecore#//Department/allocateStaffToCourse/factor"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="ra.ecore#//Course">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Course/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Course/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//Course/allocations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//Course/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="ra.ecore#//Role">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//Role/course"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Role/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Role/workload"/>
+    </genClasses>
+    <genClasses ecoreClass="ra.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Person/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ra.ecore#//Person/employer"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//Person/allocations"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//Person/workload"/>
+    </genClasses>
+    <genClasses ecoreClass="ra.ecore#//ResourceAllocation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//ResourceAllocation/person"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//ResourceAllocation/course"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ra.ecore#//ResourceAllocation/role"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//ResourceAllocation/factor"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ra.ecore#//ResourceAllocation/workload"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

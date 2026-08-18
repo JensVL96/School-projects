@@ -1,0 +1,41 @@
+Signature-Version: 1.0
+Created-By: 11.0.11 (AdoptOpenJDK)
+SHA-256-Digest-Manifest: t+TbFxbmTG5oj3B3JThh5B0faHAtfyPO/DnlZJVIrxA=
+SHA-256-Digest-Manifest-Main-Attributes: VY78hpPLQQcQWsSBC6hJVVQI+2YQxvr
+ V/A0xv/y73/0=
+
+Name: about.html
+SHA-256-Digest: HZcAQ5yLfNG+CET1JOygDwMGZM7m8R3Ap4JA1PZPx2Y=
+
+Name: rootfiles/epl-2.0.html
+SHA-256-Digest: N3PzXyubd09lONUdKqTGhK1xMOpcJMG5Qmz4cpYlWGg=
+
+Name: epl-2.0.html
+SHA-256-Digest: AED4dAeGrOY0hc5nW8gJmyCMPlZ5rTF8ACL9TK1dx/Q=
+
+Name: rootfiles/about.html
+SHA-256-Digest: bcqCNC5Xx6WcTtLGFNzmg1/4BrsT6qs+mWIgXNmGvoU=
+
+Name: copyright.txt
+SHA-256-Digest: OmAxi2JiD7ME12vi8SrSJ2miGN91U8qhLI9ZjKcJpcI=
+
+Name: META-INF/maven/org.eclipse.emf.ecp/org.eclipse.emf.ecp.emf2web.fea
+ ture/pom.xml
+SHA-256-Digest: Wivra7EJ8o32kFQNZEvoPm4XeYYy+RvpWGHtQWKJjz0=
+
+Name: feature.xml
+SHA-256-Digest: JQXVdI4m2Df95E2eryGDGcJdoyoh1MyN9AT8OlGNS6s=
+
+Name: META-INF/maven/org.eclipse.emf.ecp/org.eclipse.emf.ecp.emf2web.fea
+ ture/pom.properties
+SHA-256-Digest: l4/ExisIrn6d4Na1uWLyyyIUAJgCUD9DHGBw8B0HRIE=
+
+Name: eclipse_update_120.jpg
+SHA-256-Digest: D0fcUhJi81TIzNC+lAri7RDcArlCr58r7+VK17FdonE=
+
+Name: feature.properties
+SHA-256-Digest: XxQsKreRswWGv0rfaVpFvlVMoqYDCXoZ8U3v0A/TmBY=
+
+Name: license.html
+SHA-256-Digest: gb5ZzrbOyFArzDLUIG4huZV/GHHBYb0EtixuMKXnhqs=
+

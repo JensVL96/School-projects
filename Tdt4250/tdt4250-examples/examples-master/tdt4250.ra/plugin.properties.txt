@@ -1,0 +1,4 @@
+#
+
+pluginName = tdt4250.ra
+providerName = www.example.org

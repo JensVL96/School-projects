@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="bndtools.central.sync.SynchronizeWorkspaceWithEclipse" enabled="false" activate="activate" deactivate="deactivate">
+  <reference name="workspace" interface="aQute.bnd.build.Workspace" field="workspace"/>
+  <implementation class="bndtools.central.sync.SynchronizeWorkspaceWithEclipse"/>
+</scr:component>

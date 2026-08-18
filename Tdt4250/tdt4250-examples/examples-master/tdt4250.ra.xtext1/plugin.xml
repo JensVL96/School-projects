@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "platform:/plugin/tdt4250.ra.xtext1"
+			class = "tdt4250.ra.rax1.Rax1Package"
+			genModel = "model/generated/Rax1.genmodel" />
+	</extension>
+</plugin>

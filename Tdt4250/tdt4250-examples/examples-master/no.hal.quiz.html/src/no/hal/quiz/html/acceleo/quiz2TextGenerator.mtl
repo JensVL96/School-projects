@@ -1,0 +1,251 @@
+[comment encoding = UTF-8 /]
+[module quiz2TextGenerator('platform:/plugin/no.hal.quiz.model/model/quiz.ecore', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[template public quiz2TextGenerator(quiz : Quiz)]
+	[comment @main /]
+	[file (quiz.name.concat('.html'), false, 'UTF-8')]
+<html>
+<head>
+	<title>[quiz.title/]</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+		[for (quizPart : AbstractQuizPart | quiz.parts)]
+			[generate(quizPart)/]
+		[/for]
+<script type="text/javascript">
+function isArray(o) {
+	return o.length !== undefined;
+}
+
+function getInputElement(name) {
+	return document.getElementById(name);
+}
+
+function hasModifier(s, mod) {
+	return s.indexOf(mod) >= 0;
+}
+
+function checkInputEquals(input, prop, value, modifiers) {
+	if (typeof input === 'string') {
+		input = getInputElement(input);
+	}
+	var inputValue = input['['/]prop];
+	if (hasModifier(modifiers, '_')) {
+		inputValue = inputValue.toLowerCase();
+	}
+	var matches = (inputValue == value);
+	if (hasModifier(modifiers, '~')) {
+		var regexpObject = new RegExp(value, "");
+		matches = regexpObject.test(inputValue);
+	}
+	return ['['/]input, matches];
+}
+
+function validatedInput(result) {
+	var input = result['['/]0];
+	if (isArray(input)) {
+		for (var i = 0; i < result.length; i++) {
+			validatedInput(result['['/]i]);
+		}
+		return;
+	}
+	var valid = true;
+	for (var i = 1; i < result.length; i++) {
+		if (! result['['/]i]) {
+			valid = false;
+		}
+	}
+	var color = "YellowGreen";
+	if (! valid) {
+		color = "Red";
+	}
+	input.style.backgroundColor = color;
+}
+		[for (quizPart : AbstractQuizPart | quiz.parts)]
+			[generateCheckFunction(quizPart)/]
+		[/for]
+</script>
+</body></html>
+	[/file]
+[/template]
+
+[template public generate(quizPart : AbstractQuizPart)][/template]
+
+[template public generate(quizPart : QuizPartRef)]
+	[generate(quizPart.partRef)/]
+[/template]
+
+[template public generate(quizPart : QuizPart)]
+		<hr/><h2>[quizPart.title/]</h2>
+		<form id='[quizPart.name/]'>
+		[for (qa : AbstractQA | quizPart.questions)] 
+			[generate(qa)/]
+		[/for]
+		</form>
+		<p/><button onclick='check[toFirstUpper(quizPart.name)/]()'>Check [quizPart.title/]</button>
+[/template]
+
+[template public generate(qa : AbstractQA)][/template]
+
+[template public generate(qa : QARef)]
+	[generate(qa.qaRef)/]
+[/template]
+
+[template public generate(qa : QA)]
+	[generateOutput(qa.q)/]
+	[generateInput(qa.a)/]
+[/template]
+
+[template public generateOutput(question : Question)]
+[/template]
+
+[template public generateOutput(question : StringQuestion)]
+		<p>[question.question/]</p>
+[/template]
+
+[template public generateOutput(question : XmlQuestion)]
+	[comment TODO/] 
+[/template]
+
+[template public generateOutput(answer : OptionAnswer)][/template]
+
+[template public generateOutput(answer : StringAnswer)]
+	[answer.value/]
+[/template]
+
+[template public generateOutput(answer : NumberAnswer)]
+	[answer.value/]
+[/template]
+
+[template public generateOutput(answer : BooleanAnswer)]
+	[if answer.value]yes[else]no[/if]
+[/template]
+
+[template public generateOutput(answer : XmlAnswer)]
+	<[answer.xml.element/]>
+[/template]
+
+[template public generateInput(answer : Answer)][/template]
+
+[template public generateInput(answer : StringAnswer)]
+	[generateInputElement(answer, 'text')/]
+[/template]
+
+[template public generateInput(answer : NumberAnswer)]
+	[generateInputElement(answer, 'text')/]
+[/template]
+
+[template public generateInput(answer : BooleanAnswer)]
+	<div id="[name(answer)/]">
+		<input type="radio" name="radio">Yes</input>
+		<input type="radio" name="radio">No</input>
+	</div>'''
+[/template]
+
+[template public generateInput(answer : SingleOptionsAnswer)]
+	[generateOptionsElement(answer, null, 'input', 'type="radio"')/]
+[/template]
+
+[template public generateInput(answer : ManyOptionsAnswer)]
+	[generateOptionsElement(answer, null, 'input', 'type="checkbox"')/]
+[/template]
+
+[template public generateInputElement(answer : Answer, type : String)]
+	[let name : String = name(answer)]
+	<input type='[type/]' id='[name/]' name='[name/]'/>
+	[/let]
+[/template]
+
+[template public generateOptionsElement(answer : OptionsAnswer, outerTag : String, innerTag : String, innerAttr : String)]
+	[let name : String = name(answer)]
+	<div id="[name/]">
+	[if outerTag <> null]
+		<[outerTag/]>
+	[/if]
+	[for (option : Option | answer.options)]
+		<[innerTag/] [if innerAttr <> null][innerAttr/][/if] name='[name/]'>
+		[generateOutput(option.option)/]
+		</[innerTag/]><br/>
+	[/for]
+	[if outerTag <> null]
+		</[outerTag/]>
+	[/if]
+	</div>
+	[/let]
+[/template]
+
+[template public generateCheckFunction(quizPart : AbstractQuizPart)][/template]
+
+[template public generateCheckFunction(quizPart : QuizPartRef)]
+	[generateCheckFunction(quizPart.partRef)/]
+[/template]
+
+[template public generateCheckFunction(quizPart : QuizPart)]
+	function check[toFirstUpper(quizPart.name)/]() {
+		[for (qa : AbstractQA | quizPart.questions)]
+		validatedInput(check[toFirstUpper(name(qa))/]());
+		[/for]
+	}
+	[for (qa : AbstractQA | quizPart.questions)]
+		[generateCheckFunction(qa)/]
+	[/for]
+[/template]
+
+[template public generateCheckFunction(qa : AbstractQA)][/template]
+[template public generateCheckFunction(qa : QA)]
+	[generateCheckFunction(qa.a)/]
+[/template]
+
+[template public generateCheckFunction(answer : Answer)][/template]
+
+[template public generateCheckFunction(answer : StringAnswer)]
+	[let modifiers : String = if answer.regexp then '~' else '' endif + if answer.ignoreCase then ' ' else '' endif]
+	function [checkFunctionName(answer)/]() {
+  		var input = getInputElement('[name(answer)/]');
+		return checkInputEquals('[name(answer)/]', 'value', '[answer.value/]', '[modifiers/]');
+	}
+	[/let]
+[/template]
+
+[template public generateCheckFunction(answer : BooleanAnswer)]
+	function [checkFunctionName(answer)/]() {
+  		var input = getInputElement('[name(answer)/]');
+		return ['['/]input, input.getElementsByTagName("input")['['/][if answer.value]0[else]1[/if][']'/].checked[']'/];
+	}
+[/template]
+
+[template public generateCheckFunction(answer : OptionsAnswer)]
+	function [checkFunctionName(answer)/]() {
+		var input = getInputElement('[name(answer)/]');
+		var inputs = input.getElementsByTagName("input")
+		return ['['/]input, [for (answer.options) separator(', ')]inputs['['/][i-1/]].checked === [self.correct/][/for]];
+	}
+[/template]
+
+[query public checkFunctionName(answer : Answer) : String = 
+	'check' + toFirstUpper(name(answer))
+/]
+
+[query public name(qa : AbstractQA) : String = 
+	 let qaName : String = if qa.oclIsKindOf(QARef) then qa.oclAsType(QARef).qaRef.name else qa.oclAsType(QA).name endif in
+		 quizPart(qa).name + '_' + if qaName <> null then qaName else invoke('no.hal.quiz.html.acceleo.Quiz2TextGeneratorHelper', 'name(org.eclipse.emf.ecore.EObject, java.lang.String)', Sequence{qa, '_q_'}) endif
+ /]
+
+[query public name(answer : Answer) : String = 
+	name(qa(answer))
+/]
+
+[query public quizPart(qa : AbstractQA) : QuizPart = quizPart(oclAsType(EObject)) /]
+[query public quizPart(eObject : EObject) : QuizPart =
+	invoke('no.hal.quiz.html.acceleo.Quiz2TextGeneratorHelper', 'ancestor(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EClass)', Sequence{eObject, QuizPart})
+/]
+
+[query public qa(answer : Answer) : QA = qa(oclAsType(EObject)) /]
+[query public qa(eObject : EObject) : QA =
+	invoke('no.hal.quiz.html.acceleo.Quiz2TextGeneratorHelper', 'ancestor(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EClass)', Sequence{eObject, QA})
+/]
+
+[query public toFirstUpper(s : String) : String =
+	invoke('no.hal.quiz.html.acceleo.Quiz2TextGeneratorHelper', 'toFirstUpper(java.lang.String)', Sequence{s})
+/]

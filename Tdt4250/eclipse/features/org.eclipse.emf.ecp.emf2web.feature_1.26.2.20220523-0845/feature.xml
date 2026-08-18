@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.ecp.emf2web.feature"
+      label="JSON Forms Integration"
+      version="1.26.2.20220523-0845"
+      provider-name="Eclipse Modeling Project">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emf.ecp.emf2web"
+         download-size="49"
+         install-size="78"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.emf2web.json"
+         download-size="64"
+         install-size="132"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.emf2web.ui"
+         download-size="29"
+         install-size="55"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.emf2web.ui.json"
+         download-size="18"
+         install-size="25"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+</feature>

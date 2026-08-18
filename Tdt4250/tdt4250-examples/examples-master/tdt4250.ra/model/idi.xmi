@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ra:Department xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ra="platform:/plugin/tdt4250.ra/model/ra.ecore" xsi:schemaLocation="platform:/plugin/tdt4250.ra/model/ra.ecore ra.ecore" name="Dept. of CS" shortName="IDI">
+  <staff name="Hallvard">
+    <allocations href="sample.xmi#//@resourceAllocations.0"/>
+    <allocations href="sample.xmi#//@resourceAllocations.1"/>
+  </staff>
+  <courses code="TDT4250" name="Advanced Software Design"/>
+  <courses code="IT1901" name="IT Project I"/>
+</ra:Department>

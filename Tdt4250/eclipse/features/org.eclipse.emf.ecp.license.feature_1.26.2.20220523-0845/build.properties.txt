@@ -1,0 +1,13 @@
+bin.includes = feature.xml,\
+               feature.properties,\
+               license.html,\
+               copyright.txt,\
+               eclipse_update_120.jpg,\
+               about.html,\
+               rootfiles/,\
+               build.properties,\
+               epl-2.0.html
+src.includes = license.html,\
+               rootfiles/,\
+               epl-2.0.html
+root=rootfiles

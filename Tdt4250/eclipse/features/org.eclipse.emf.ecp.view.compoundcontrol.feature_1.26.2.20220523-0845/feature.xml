@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.ecp.view.compoundcontrol.feature"
+      label="EMF Forms Compound Control Feature"
+      version="1.26.2.20220523-0845"
+      provider-name="Eclipse Modeling Project"
+      plugin="org.eclipse.emf.ecp.view.compoundcontrol.model">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.compoundcontrol.model"
+         download-size="31"
+         install-size="54"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.compoundcontrol.model.edit"
+         download-size="26"
+         install-size="41"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.compoundcontrol.swt"
+         download-size="25"
+         install-size="47"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.compoundcontrol.tooling"
+         download-size="11"
+         install-size="15"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+</feature>

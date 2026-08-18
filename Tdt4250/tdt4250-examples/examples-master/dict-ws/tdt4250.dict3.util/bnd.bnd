@@ -1,0 +1,16 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+-baseline: *
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	tdt4250.dict3.api;version=latest,\
+	osgi.cmpn,\
+	org.osgi.service.cm,\
+	org.osgi.core
+
+javac.source: 1.8
+javac.target: 1.8
+-runrequires: bnd.identity;id='tdt4250.dict3.api'
+-runfw: org.eclipse.osgi;version='[3.13.100.v20180827-1536,3.13.100.v20180827-1536]'
+-runee: JavaSE-1.8
+-runbundles: tdt4250.dict3.api;version=snapshot

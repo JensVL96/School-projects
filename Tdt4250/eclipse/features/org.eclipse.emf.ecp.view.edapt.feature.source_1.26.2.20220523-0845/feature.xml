@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.emf.ecp.view.edapt.feature.source" version="1.26.2.20220523-0845" plugin="org.eclipse.emf.ecp.view.edapt" label="EMF Forms IDE Tooling Edapt View Model Migration Feature incl. Sources" provider-name="Eclipse Modeling Project">
+  <description>
+      %description
+   </description>
+  <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+  <license url="%licenseURL">
+      %license
+   </license>
+  <includes id="org.eclipse.emf.ecp.view.edapt.feature" version="1.26.2.20220523-0845"/>
+  <plugin id="org.eclipse.emf.ecp.view.edapt.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.table.edapt.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.model.edapt.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+</feature>

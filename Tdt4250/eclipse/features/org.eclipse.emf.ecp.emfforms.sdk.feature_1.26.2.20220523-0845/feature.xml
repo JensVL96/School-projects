@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.ecp.emfforms.sdk.feature"
+      label="EMF Forms SDK"
+      version="1.26.2.20220523-0845"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.emf.ecp.emfforms.idetooling.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.emfforms.runtime.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.license.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.controls.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.editor.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.emf2web.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.emf2web.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.emfforms.idetooling.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.emfforms.runtime.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.controls.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.editor.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.edapt.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.edapt.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emfforms.editor.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.viewproxy.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emfforms.swt.control.multiattribute.feature.source"
+         version="1.26.2.20220523-0845"/>
+
+   <plugin
+         id="org.eclipse.emfforms.setup.base"
+         download-size="10"
+         install-size="16"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+</feature>

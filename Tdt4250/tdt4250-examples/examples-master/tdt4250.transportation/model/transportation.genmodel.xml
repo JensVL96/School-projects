@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tdt4250.transportation/src" modelPluginID="tdt4250.transportation"
+    templateDirectory="" modelName="Transportation" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>transportation.ecore</foreignModel>
+  <genPackages prefix="Transportation" basePackage="tdt4250" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="transportation.ecore#/">
+    <genDataTypes ecoreDataType="transportation.ecore#//EGeoLoc"/>
+    <genClasses ecoreClass="transportation.ecore#//Vehicle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//Vehicle/capacity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//Vehicle/routes"/>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//VehicleRoute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//VehicleRoute/goods"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference transportation.ecore#//VehicleRoute/plan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//VehicleRoute/actualRoute"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference transportation.ecore#//VehicleRoute/vehicle"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//VehicleRoute/totalWeight"/>
+      <genOperations ecoreOperation="transportation.ecore#//VehicleRoute/receiveTrackingInfo">
+        <genParameters ecoreParameter="transportation.ecore#//VehicleRoute/receiveTrackingInfo/latitude"/>
+        <genParameters ecoreParameter="transportation.ecore#//VehicleRoute/receiveTrackingInfo/longitude"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//Goods">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//Goods/weight"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference transportation.ecore#//Goods/origin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference transportation.ecore#//Goods/destination"/>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//GeoLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//GeoLocation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//GeoLocation/geoLoc"/>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//TrackingEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference transportation.ecore#//TrackingEvent/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute transportation.ecore#//TrackingEvent/timestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//Transportation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//Transportation/vehicles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//Transportation/locations"/>
+    </genClasses>
+    <genClasses ecoreClass="transportation.ecore#//GeoLocations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference transportation.ecore#//GeoLocations/locations"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

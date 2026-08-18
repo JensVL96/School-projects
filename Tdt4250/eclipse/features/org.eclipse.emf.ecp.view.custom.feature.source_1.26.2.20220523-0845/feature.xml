@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.emf.ecp.view.custom.feature.source" version="1.26.2.20220523-0845" plugin="org.eclipse.emf.ecp.view.custom.model" label="EMF Forms Custom Control Model incl. Sources" provider-name="%providerName">
+  <description>
+      %description
+   </description>
+  <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+  <license url="%licenseURL">
+      %license
+   </license>
+  <includes id="org.eclipse.emf.ecp.view.custom.feature" version="1.26.2.20220523-0845"/>
+  <plugin id="org.eclipse.emf.ecp.view.custom.model.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.custom.model.edit.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.custom.ui.swt.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+</feature>

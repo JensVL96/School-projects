@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment1:Department
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:assignment1="platform:/resource/Assignment1/model/assignment1.ecore"
+    name="IDI">
+  <spesialization
+      name="Interaction Design, Game and Learning Technology"
+      LowerLevelCourseLimit="2"
+      NumberOfCompulsoryCourses="5">
+    <semester
+        season="Autumn"
+        Year="1st">
+      <courses
+          code="IT3402"
+          name="User Interface Design"
+          Department="/"/>
+      <courses
+          code="TDT4117"
+          name="Information Retrieval"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4136"
+          name="Introduction to Artificial Intelligence"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4165"
+          name="Programming Languages"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4175"
+          name="Information Systems"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4195"
+          name="Visual Computing Fundamentals"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4250"
+          name="Advanced Software Design"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4252"
+          name="Enterprise Architecture for Enterprise Innovation"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4259"
+          name="Applied Data Science"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+    </semester>
+    <semester
+        season="Spring"
+        Year="1st">
+      <courses
+          code="IT3010"
+          name="Empirical Research Methodologies in IT and Digitalization"
+          Department="/"/>
+      <courses
+          name="Experts in Team"
+          Department="/"/>
+      <courses
+          code="TDT4257"
+          name="Digital Service Innovation"
+          status="ElectiveCoordinated"
+          Department="/"/>
+      <courses
+          code="IT3022"
+          name="Participatory Design"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="IT3024"
+          name="Research Methods in Human-Computer Interaction"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4171"
+          name="Artificial Intelligence Methods"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4230"
+          name="Graphics and Visualization"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4237"
+          name="Software Security and Data Privacy"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4240"
+          name="Software Architecture"
+          status="ElectiveNotCoordinated"
+          studyLevel="ThirdYearCourse"
+          Department="/"/>
+      <courses
+          code="TDT4242"
+          name="Advanced Software Engineering"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+      <courses
+          code="TDT4245"
+          name="Cooperation Technology and Social Media"
+          status="ElectiveNotCoordinated"
+          Department="/"/>
+    </semester>
+    <semester
+        season="Autumn"
+        Year="2nd"/>
+    <semester
+        season="Spring"
+        Year="2nd"/>
+  </spesialization>
+  <spesialization
+      name="Software"
+      LowerLevelCourseLimit="2"
+      NumberOfCompulsoryCourses="5"/>
+  <spesialization
+      name="Databases and Search"
+      LowerLevelCourseLimit="1"
+      NumberOfCompulsoryCourses="6"/>
+  <spesialization
+      name="Artificial Intelligence"
+      NumberOfCompulsoryCourses="6"/>
+</assignment1:Department>

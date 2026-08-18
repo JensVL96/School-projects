@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ra:Department xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ra="platform:/plugin/tdt4250.ra/model/ra.ecore" name="Dept. of CS" shortName="IDI">
+  <staff name="Hallvard" allocations="//@resourceAllocations.0 //@resourceAllocations.1"/>
+  <staff name="Adrian" allocations="//@resourceAllocations.2"/>
+  <staff name="Børge" allocations="//@resourceAllocations.3"/>
+  <courses code="TDT4250" name="AdvSoft" allocations="//@resourceAllocations.0"/>
+  <courses code="IT1901" name="InfProj" allocations="//@resourceAllocations.1 //@resourceAllocations.2"/>
+  <courses code="TDT4100" allocations="//@resourceAllocations.3"/>
+  <resourceAllocations person="//@staff.0" course="//@courses.0" factor="1.5"/>
+  <resourceAllocations person="//@staff.0" course="//@courses.1" factor="0.3"/>
+  <resourceAllocations person="//@staff.1" course="//@courses.1" factor="0.7"/>
+  <resourceAllocations person="//@staff.2" course="//@courses.2"/>
+</ra:Department>

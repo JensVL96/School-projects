@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.emf.ecp.view.validation.initial.feature.source" version="1.26.2.20220523-0845" plugin="org.eclipse.emf.ecp.view.validation" label="EMF Forms Deep Validation Initial Feature incl. Sources" provider-name="Eclipse Modeling Project">
+  <description>
+      %description
+   </description>
+  <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+  <license url="%licenseURL">
+      %license
+   </license>
+  <includes id="org.eclipse.emf.ecp.view.validation.initial.feature" version="1.26.2.20220523-0845"/>
+  <plugin id="org.eclipse.emfforms.core.services.mappingprovider.table.panel.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="org.eclipse.emf.ecp.view.treemasterdetail.validation.source" version="1.26.2.20220523-0845" download-size="0" install-size="0" unpack="false"/>
+</feature>

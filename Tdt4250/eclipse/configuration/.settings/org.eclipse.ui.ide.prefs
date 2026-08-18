@@ -1,0 +1,6 @@
+MAX_RECENT_WORKSPACES=10
+RECENT_WORKSPACES=/home/jens/Documents/TDT4250/tdt4250-assignment1\n/home/jens/eclipse-workspace
+RECENT_WORKSPACES_PROTOCOL=3
+SHOW_RECENT_WORKSPACES=false
+SHOW_WORKSPACE_SELECTION_DIALOG=false
+eclipse.preferences.version=1

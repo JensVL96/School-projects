@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated transportation -->
+      <package
+            uri="platform:/plugin/tdt4250.transportation/model/transportation.ecore"
+            class="tdt4250.transportation.TransportationPackage"
+            genModel="model/transportation.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated transportation -->
+      <parser
+            type="transportation"
+            class="tdt4250.transportation.util.TransportationResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

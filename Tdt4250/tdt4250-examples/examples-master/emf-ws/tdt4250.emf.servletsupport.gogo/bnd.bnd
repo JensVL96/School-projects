@@ -1,0 +1,19 @@
+-buildpath: \
+	osgi.annotation;version='7.0.0',\
+	osgi.core;version='7.0.0',\
+	osgi.cmpn;version='7.0.0',\
+	org.apache.felix.gogo.runtime,\
+	tdt4250.emf.servletsupport;version=latest,\
+	tdt4250.emf.servletsupport.impl;version=latest,\
+	org.eclipse.emf.common,\
+	tdt4250.emf.servlet;version=latest
+
+-testpath: \
+	${junit},\
+	${mockito},\
+	${mockito-deps}
+
+javac.source: 1.8
+javac.target: 1.8
+
+Bundle-Version: 0.0.0.${tstamp}

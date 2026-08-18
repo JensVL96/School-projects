@@ -1,0 +1,14 @@
+-buildpath: \
+	osgi.core;version=7.0.0,\
+	osgi.annotation;version=7.0.0,\
+	osgi.cmpn;version=7.0.0,\
+	com.fasterxml.jackson.core.jackson-annotations,\
+	com.fasterxml.jackson.core.jackson-core,\
+	com.fasterxml.jackson.core.jackson-databind,\
+	org.eclipse.emf.ecore,\
+	org.eclipse.emf.common
+
+javac.source: 1.8
+javac.target: 1.8
+
+-runrequires: bnd.identity;id='tdt4250.emf.servletsupport'

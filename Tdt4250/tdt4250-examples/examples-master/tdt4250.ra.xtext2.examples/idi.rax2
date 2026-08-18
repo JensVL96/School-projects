@@ -1,0 +1,16 @@
+IDI - "Dept. of CS"
+
+Persons:
+	"Hallvard Trætteberg"
+	Adrian
+
+Courses:
+	TDT4250 - "Advanced Software Design" requires lecturer for 80%, exerciseTA for 20%
+	IT1901 - InfProj requires lecturer for 60%, coordinator for 40%
+	
+
+Allocations:
+	"Hallvard Trætteberg" is 100% in TDT4250
+	"Hallvard Trætteberg" is in TDT4250 as 40% lecturer
+	 Adrian is in IT1901 as 60% lecturer
+	 Adrian is in IT1901 as 100% coordinator

@@ -1,0 +1,3 @@
+artifactId=org.eclipse.emf.ecp.view.categorization.feature
+groupId=org.eclipse.emf.ecp
+version=1.26.2-SNAPSHOT

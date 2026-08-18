@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:ra="platform:/plugin/tdt4250.ra/model/ra.ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_AVqDsO8dEemmF8GBN-uQhg" selectedViews="_AHxjQO8eEemYzIQ48BtxKg" version="14.1.0.201810161215">
+    <semanticResources>sample.ra</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_AHxjQO8eEemYzIQ48BtxKg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_G4Y7cO8eEemYzIQ48BtxKg" name="Ra Diagram 1" repPath="#_G39doO8eEemYzIQ48BtxKg">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']"/>
+        <target xmi:type="ra:Department" href="sample.ra#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_G39doO8eEemYzIQ48BtxKg" name="Ra Diagram 1">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_G4UqAO8eEemYzIQ48BtxKg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_G4VREO8eEemYzIQ48BtxKg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_G4sdcO8eEemYzIQ48BtxKg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_G4sdce8eEemYzIQ48BtxKg" type="Sirius" element="_G39doO8eEemYzIQ48BtxKg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ZFMDEO8eEemYzIQ48BtxKg" type="2001" element="_ZE-nsO8eEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_ZFPGYO8eEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ZFPGYe8eEemYzIQ48BtxKg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9aCVMO8eEemYzIQ48BtxKg" type="3004" element="_9Yv7wO8eEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9aCVMe8eEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9aCVMu8eEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ZFMDEe8eEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZFMDEu8eEemYzIQ48BtxKg" x="117" y="144" width="20" height="20"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ZFQ7kO8eEemYzIQ48BtxKg" type="2001" element="_ZFCSEO8eEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_ZFSJsO8eEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ZFSJse8eEemYzIQ48BtxKg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9aC8QO8eEemYzIQ48BtxKg" type="3004" element="_9YxJ4e8eEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9aC8Qe8eEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9aC8Qu8eEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ZFQ7ke8eEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZFQ7ku8eEemYzIQ48BtxKg" x="216" y="144" width="20" height="20"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_p6Z3QO8fEemYzIQ48BtxKg" type="2001" element="_p6NqAe8fEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_p6bFYO8fEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_p6bFYe8fEemYzIQ48BtxKg" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_p6gk8O8fEemYzIQ48BtxKg" type="3004" element="_p6OREO8fEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_p6gk8e8fEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6gk8u8fEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_p6Z3Qe8fEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6Z3Qu8fEemYzIQ48BtxKg" x="72" y="27" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_p6evwO8fEemYzIQ48BtxKg" type="2001" element="_p6O4IO8fEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_p6fW0O8fEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_p6fW0e8fEemYzIQ48BtxKg" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_p6gk8-8fEemYzIQ48BtxKg" type="3004" element="_p6O4Ie8fEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_p6gk9O8fEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6gk9e8fEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_p6evwe8fEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6evwu8fEemYzIQ48BtxKg" x="180" y="27" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_K91mgO8hEemYzIQ48BtxKg" type="2001" element="_K9u40O8hEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_K92NkO8hEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_K92Nke8hEemYzIQ48BtxKg" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_K9538O8hEemYzIQ48BtxKg" type="3004" element="_K9u40e8hEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_K9538e8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_K9538u8hEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_K91mge8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_K91mgu8hEemYzIQ48BtxKg" x="297" y="27" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_XqoCMO8hEemYzIQ48BtxKg" type="2001" element="_XqhUgO8hEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_XqopQO8hEemYzIQ48BtxKg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_XqopQe8hEemYzIQ48BtxKg" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_XqqecO8hEemYzIQ48BtxKg" type="3004" element="_Xqh7kO8hEemYzIQ48BtxKg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Xqqece8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Xqqecu8hEemYzIQ48BtxKg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_XqoCMe8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XqoCMu8hEemYzIQ48BtxKg" x="326" y="139" width="30" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_G4sdcu8eEemYzIQ48BtxKg"/>
+        <edges xmi:type="notation:Edge" xmi:id="_g5mTMO8hEemYzIQ48BtxKg" type="4001" element="_g3s1wO8hEemYzIQ48BtxKg" source="_ZFMDEO8eEemYzIQ48BtxKg" target="_p6Z3QO8fEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_g5mTNO8hEemYzIQ48BtxKg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5mTNe8hEemYzIQ48BtxKg" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5mTNu8hEemYzIQ48BtxKg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5mTN-8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5m6QO8hEemYzIQ48BtxKg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5m6Qe8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_g5mTMe8hEemYzIQ48BtxKg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_g5mTMu8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g5mTM-8hEemYzIQ48BtxKg" points="[-4, -10, 36, 102]$[-35, -97, 5, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5m6Qu8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5m6Q-8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_g5m6RO8hEemYzIQ48BtxKg" type="4001" element="_g3tc0u8hEemYzIQ48BtxKg" source="_ZFMDEO8eEemYzIQ48BtxKg" target="_p6evwO8fEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_g5nhUO8hEemYzIQ48BtxKg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5nhUe8hEemYzIQ48BtxKg" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5nhUu8hEemYzIQ48BtxKg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5nhU-8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5nhVO8hEemYzIQ48BtxKg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5nhVe8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_g5m6Re8hEemYzIQ48BtxKg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_g5m6Ru8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g5m6R-8hEemYzIQ48BtxKg" points="[6, -10, -62, 102]$[58, -97, -10, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5oIYO8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5oIYe8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_g5oIYu8hEemYzIQ48BtxKg" type="4001" element="_g3uq8O8hEemYzIQ48BtxKg" source="_ZFQ7kO8eEemYzIQ48BtxKg" target="_p6evwO8fEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_g5oIZu8hEemYzIQ48BtxKg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5oIZ-8hEemYzIQ48BtxKg" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5oIaO8hEemYzIQ48BtxKg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5oIae8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g5ovcO8hEemYzIQ48BtxKg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g5ovce8hEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_g5oIY-8hEemYzIQ48BtxKg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_g5oIZO8hEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g5oIZe8hEemYzIQ48BtxKg" points="[-3, -10, 28, 102]$[-27, -97, 4, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5ovcu8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g5ovc-8hEemYzIQ48BtxKg" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Yf3gwO8kEemYzIQ48BtxKg" type="4001" element="_Yfu96O8kEemYzIQ48BtxKg" source="_XqoCMO8hEemYzIQ48BtxKg" target="_K91mgO8hEemYzIQ48BtxKg">
+          <children xmi:type="notation:Node" xmi:id="_Yf4H0O8kEemYzIQ48BtxKg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yf4H0e8kEemYzIQ48BtxKg" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Yf4H0u8kEemYzIQ48BtxKg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yf4H0-8kEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Yf4H1O8kEemYzIQ48BtxKg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yf4H1e8kEemYzIQ48BtxKg" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Yf3gwe8kEemYzIQ48BtxKg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Yf3gwu8kEemYzIQ48BtxKg" fontName=".AppleSystemUIFont" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yf3gw-8kEemYzIQ48BtxKg" points="[0, 0, 27, 82]$[-27, -82, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yf4u4O8kEemYzIQ48BtxKg" id="(0.5333333333333333,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yf4u4e8kEemYzIQ48BtxKg" id="(0.6,1.0)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_ZE-nsO8eEemYzIQ48BtxKg" name="Hallvard" outgoingEdges="_g3s1wO8hEemYzIQ48BtxKg _g3tc0u8hEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Person" href="sample.ra#//@staff.0"/>
+      <semanticElements xmi:type="ra:Person" href="sample.ra#//@staff.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_9Yv7wO8eEemYzIQ48BtxKg" labelSize="12" showIcon="false" color="194,239,255">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_ZFCSEO8eEemYzIQ48BtxKg" name="Adrian" outgoingEdges="_g3uq8O8hEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Person" href="sample.ra#//@staff.1"/>
+      <semanticElements xmi:type="ra:Person" href="sample.ra#//@staff.1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_9YxJ4e8eEemYzIQ48BtxKg" labelSize="12" showIcon="false" color="194,239,255">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_XqhUgO8hEemYzIQ48BtxKg" name="Børge" outgoingEdges="_Yfu96O8kEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Person" href="sample.ra#//@staff.2"/>
+      <semanticElements xmi:type="ra:Person" href="sample.ra#//@staff.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_Xqh7kO8hEemYzIQ48BtxKg" labelSize="12" showIcon="false" color="194,239,255">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='PersonNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_p6NqAe8fEemYzIQ48BtxKg" name="TDT4250" incomingEdges="_g3s1wO8hEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Course" href="sample.ra#//@courses.0"/>
+      <semanticElements xmi:type="ra:Course" href="sample.ra#//@courses.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_p6OREO8fEemYzIQ48BtxKg" labelSize="12" showIcon="false" shape="dot" color="204,242,166">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_p6O4IO8fEemYzIQ48BtxKg" name="IT1901" incomingEdges="_g3tc0u8hEemYzIQ48BtxKg _g3uq8O8hEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Course" href="sample.ra#//@courses.1"/>
+      <semanticElements xmi:type="ra:Course" href="sample.ra#//@courses.1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_p6O4Ie8fEemYzIQ48BtxKg" labelSize="12" showIcon="false" shape="dot" color="204,242,166">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_K9u40O8hEemYzIQ48BtxKg" name="TDT4100" incomingEdges="_Yfu96O8kEemYzIQ48BtxKg" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ra:Course" href="sample.ra#//@courses.2"/>
+      <semanticElements xmi:type="ra:Course" href="sample.ra#//@courses.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_K9u40e8hEemYzIQ48BtxKg" labelSize="12" showIcon="false" shape="dot" color="204,242,166">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@nodeMappings[name='CourseNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_g3s1wO8hEemYzIQ48BtxKg" name="1.5" sourceNode="_ZE-nsO8eEemYzIQ48BtxKg" targetNode="_p6NqAe8fEemYzIQ48BtxKg">
+      <target xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.0"/>
+      <semanticElements xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_g3s1we8hEemYzIQ48BtxKg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_g3s1wu8hEemYzIQ48BtxKg" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_g3tc0u8hEemYzIQ48BtxKg" name="0.3" sourceNode="_ZE-nsO8eEemYzIQ48BtxKg" targetNode="_p6O4IO8fEemYzIQ48BtxKg">
+      <target xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.1"/>
+      <semanticElements xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_g3uD4O8hEemYzIQ48BtxKg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_g3uD4e8hEemYzIQ48BtxKg" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_g3uq8O8hEemYzIQ48BtxKg" name="0.7" sourceNode="_ZFCSEO8eEemYzIQ48BtxKg" targetNode="_p6O4IO8fEemYzIQ48BtxKg">
+      <target xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.2"/>
+      <semanticElements xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_g3uq8e8hEemYzIQ48BtxKg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_g3uq8u8hEemYzIQ48BtxKg" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Yfu96O8kEemYzIQ48BtxKg" name="0.0" sourceNode="_XqhUgO8hEemYzIQ48BtxKg" targetNode="_K9u40O8hEemYzIQ48BtxKg">
+      <target xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.3"/>
+      <semanticElements xmi:type="ra:ResourceAllocation" href="sample.ra#//@resourceAllocations.3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Yfvk8O8kEemYzIQ48BtxKg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Yfvk8e8kEemYzIQ48BtxKg" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer/@edgeMappings[name='ResourceAllocationEdge']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_G4DkQO8eEemYzIQ48BtxKg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/tdt4250.ra.diagram/description/ra.odesign#//@ownedViewpoints[name='RaViewpoint']/@ownedRepresentations[name='RaDiagram']/@defaultLayer"/>
+    <target xmi:type="ra:Department" href="sample.ra#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

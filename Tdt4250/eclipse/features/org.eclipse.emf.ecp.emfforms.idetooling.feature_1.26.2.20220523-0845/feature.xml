@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.ecp.emfforms.idetooling.feature"
+      label="EMF Forms IDE Tooling"
+      version="1.26.2.20220523-0845"
+      provider-name="Eclipse Modeling Project">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.editor.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.model.controls.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <includes
+         id="org.eclipse.emf.ecp.view.validation.initial.feature"
+         version="1.26.2.20220523-0845"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.ide.util"
+         download-size="30"
+         install-size="52"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.model.preview.common"
+         download-size="24"
+         install-size="41"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.model.preview.e3"
+         download-size="52"
+         install-size="95"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.model.project.installer"
+         download-size="37"
+         install-size="72"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.ide.editor.viewmodel"
+         download-size="16"
+         install-size="38"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.ide.editor.view"
+         download-size="59"
+         install-size="119"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.ide.view.service"
+         download-size="18"
+         install-size="27"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.makeithappen.wizards"
+         download-size="382"
+         install-size="1021"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.view.template.tooling"
+         download-size="121"
+         install-size="273"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.editor"
+         download-size="87"
+         install-size="184"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecp.ide.editor.view.templatebridge"
+         download-size="14"
+         install-size="17"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.coffee.wizards"
+         download-size="155"
+         install-size="499"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.example.common.wizards"
+         download-size="20"
+         install-size="30"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.builder"
+         download-size="47"
+         install-size="94"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.viewtemplate.builder"
+         download-size="13"
+         install-size="16"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.view.multisegment"
+         download-size="45"
+         install-size="97"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.view.segments"
+         download-size="20"
+         install-size="31"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.view.indexsegment"
+         download-size="13"
+         install-size="17"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.view.mappingsegment"
+         download-size="22"
+         install-size="39"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emfforms.ide.preferences"
+         download-size="17"
+         install-size="23"
+         version="1.26.2.20220523-0845"/>
+
+</feature>

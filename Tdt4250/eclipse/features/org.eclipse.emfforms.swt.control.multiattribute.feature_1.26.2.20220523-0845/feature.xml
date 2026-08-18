@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emfforms.swt.control.multiattribute.feature"
+      label="EMF Forms SWT Control for Multi EAttribtues"
+      version="1.26.2.20220523-0845"
+      provider-name="%providerName"
+      plugin="org.eclipse.emfforms.swt.control.multiattribute">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emfforms.swt.control.multiattribute"
+         download-size="61"
+         install-size="124"
+         version="1.26.2.20220523-0845"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Built-By: genie.edapt
+Created-By: Apache Maven 3.6.3
+Build-Jdk: 1.8.0_192
+
+Name: META-INF/maven/edapt/org.eclipse.emf.edapt.runtime.feature/pom.p
+ roperties
+SHA-256-Digest: o142nqB0+jCquZzfTzGs+MxjaLtfwr511FBWh+MiHMU=
+
+Name: epl-2.0.html
+SHA-256-Digest: vLOKARA6n9BRqEGTUoqiZUOWjVM7sGu8/Lza85WFl6c=
+
+Name: META-INF/maven/edapt/org.eclipse.emf.edapt.runtime.feature/pom.x
+ ml
+SHA-256-Digest: 51nmCs1JYkKQOAB/En325snndh1rtAE9xslNtMvFKkk=
+
+Name: feature.xml
+SHA-256-Digest: 02mRjr5V8ej4wbhrsir0Z5O8k1jwk2Y5j43TWOYXs6o=
+
+Name: feature.properties
+SHA-256-Digest: VcQEpCmW5ONsdtfKXylNqqEwuuaAql9A+tdcfYpttUU=
+
+Name: license.html
+SHA-256-Digest: X315zLynvdLZ4DaYSopgxruQUUEadA3FOPNviC+YO24=
+
