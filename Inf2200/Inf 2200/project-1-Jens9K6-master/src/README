@@ -1,0 +1,20 @@
+Mergesort performance comparison between hotspots in c and assembly.
+
+Made by Jens Christian Valen Leynse and Jørgen Angelo Lyngstad
+
+
+
+Navigate to the folder where all the files are
+
+To compile:
+Type: make
+
+To run the program:
+Type: ./program 
+
+
+If you want to profile:
+
+After compiling and running it once:
+Type: gprof program gmon.out >data.txt
+

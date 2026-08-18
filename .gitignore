@@ -13,3 +13,7 @@ __pycache__/
 .~lock.*.odt#
 vendor/*.exe
 vendor/
+
+# Inf2200 local artifacts
+Inf2200/*.rar
+Inf2200/github-recovery-codes.txt
