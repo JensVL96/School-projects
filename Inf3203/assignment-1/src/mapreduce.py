@@ -6,6 +6,7 @@ import os
 import json
 import uuid
 import socket
+import time
 from datetime import datetime
 from fabric import Connection
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -109,6 +110,8 @@ def get_random_file_name(prefix, temporary=True):
     return f"{prefix}_{timestamp}_{uuid.uuid4().hex[:8]}.json"
 
 def do_mapping(files, config, output_file):
+    start_time = time.perf_counter()  # Start timing the mapper
+
     with open(output_file, 'w') as of:
         of.write('[')
         first = True
@@ -123,7 +126,13 @@ def do_mapping(files, config, output_file):
                         first = False
         of.write(']')
 
+    end_time = time.perf_counter()  # End timing the mapper
+    mapper_time = end_time - start_time
+    print(f"Mapper Time: {mapper_time:.6f} seconds")  # Log the mapper time
+
 def do_reducing(files, config, output_file):
+    start_time = time.perf_counter()  # Start timing the reducer
+
     intermediate_data = []
     for file in files:
         with open(file, 'r') as f:
@@ -134,6 +143,10 @@ def do_reducing(files, config, output_file):
     with open(output_file, 'w') as f:
         json.dump(reduced_data, f)
 
+    end_time = time.perf_counter()  # End timing the reducer
+    reducer_time = end_time - start_time
+    print(f"Reducer Time: {reducer_time:.6f} seconds")  # Log the reducer time
+
 def remote_map(node, chunk, config, output_file):
     print("Mapping on node: ", node)
     conn = Connection(node)
@@ -141,6 +154,7 @@ def remote_map(node, chunk, config, output_file):
     script = f'python3 {os.path.abspath(__file__)} --config_path {config.config_path} --execution_mode map --intermediate_files {remote_files} --tmp_output_file {output_file}'
     result = conn.run(script, hide=False)
     return result.stdout
+
 
 def remote_reduce(node, chunk, config, output_file):
     print("Reducing on node: ", node)
@@ -275,5 +289,3 @@ if __name__ == "__main__":
         do_mapping(args.intermediate_files.split(','), config, args.tmp_output_file)
     elif args.execution_mode == "reduce":
         do_reducing(args.intermediate_files.split(','), config, args.tmp_output_file)
-
-

@@ -23,3 +23,13 @@ __pycache__/
 
 # Windows alternate stream artifacts copied as files
 *:Zone.Identifier
+
+# Python/Jupyter/log/temp
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.log
+
+# Build/output/temp
+mr_tmp/
+output.txt
