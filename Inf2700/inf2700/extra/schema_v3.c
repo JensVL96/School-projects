@@ -1,0 +1,1164 @@
+/***********************************************************
+ * Schema for assignments in the Databases course INF-2700 *
+ * UIT - The Arctic University of Norway                   *
+ * Author: Weihai Yu                                       *
+ ************************************************************/
+
+#include "schema.h"
+#include "pmsg.h"
+#include <string.h>
+#include "test_data_gen.h"
+#include <assert.h>
+
+/** @brief Field descriptor */
+typedef struct field_desc_struct {
+  char *name;        /**< field name */
+  field_type type;   /**< field type */
+  int len;           /**< field length (number of bytes) */
+  int offset;        /**< offset from the beginning of the record */
+  field_desc_p next; /**< next field_desc of the table, NULL if no more */
+} field_desc_struct;
+
+/** @brief Table/record schema */
+/** A schema is a linked list of @ref field_desc_struct "field descriptors".
+    All records of a table are of the same length.
+*/
+typedef struct schema_struct {
+  char *name;           /**< table name */
+  field_desc_p first;   /**< first field_desc */
+  field_desc_p last;    /**< last field_desc */
+  int num_fields;       /**< number of fields in the table */
+  int len;              /**< record length */
+  tbl_p tbl;            /**< table descriptor */
+} schema_struct;
+
+/** @brief Table descriptor */
+/** A table descriptor allows us to find the schema and
+    run-time infomation about the table.
+ */
+typedef struct tbl_desc_struct {
+  schema_p sch;      /**< schema of this table. */
+  int num_records;   /**< number of records this table has. */
+  page_p current_pg; /**< current page being accessed. */
+  tbl_p next;        /**< next tbl_desc in the database. */
+} tbl_desc_struct;
+
+int binary_search();
+
+void put_field_info ( pmsg_level level, field_desc_p f )
+{
+  if ( f == NULL )
+    {
+      put_msg (level,  "  empty field\n");
+      return;
+    }	
+  put_msg (level, "  \"%s\", ", f->name);
+  if ( is_int_field (f) )
+    append_msg (level,  "int ");
+  else
+    append_msg (level,  "str ");
+  append_msg (level, "field, len: %d, offset: %d, ", f->len, f->offset);
+  if (f->next != NULL)
+    append_msg (level,  ", next field: %s\n", f->next->name);
+  else
+    append_msg (level,  "\n");
+}
+
+void put_schema_info ( pmsg_level level, schema_p s )
+{
+  if ( s == NULL )
+    {
+      put_msg (level,  "--empty schema\n");
+      return;
+    }
+  field_desc_p f;
+  put_msg (level, "--schema %s: %d field(s), totally %d bytes\n",
+	   s->name, s->num_fields, s->len);
+  for ( f = s->first; f != NULL; f = f->next)
+    put_field_info (level, f);
+  put_msg (level, "--\n");
+}
+
+void put_tbl_info ( pmsg_level level, tbl_p t )
+{
+  if ( t == NULL )
+    {
+      put_msg (level,  "--empty tbl desc\n");
+      return;
+    }
+  put_schema_info (level, t->sch);
+  put_file_info (level, t->sch->name);
+  put_msg (level, " %d blocks, %d records\n",
+	   file_num_blocks (t->sch->name), t->num_records);
+  put_msg (level, "----\n");
+}
+
+void put_record_info ( pmsg_level level, record r, schema_p s )
+{
+  field_desc_p f;
+  size_t i = 0;
+  put_msg (level, "Record: ");
+  for ( f = s->first; f != NULL; f = f->next, i++)
+    {
+      if ( is_int_field (f) )
+	append_msg (level,  "%d", *(int *)r[i] );
+      else
+	append_msg (level,  "%s", (char *)r[i] );
+			
+      if (f->next != NULL)
+	append_msg (level,  " | " );
+    }
+  append_msg (level,  "\n" );
+}
+
+void put_db_info ( pmsg_level level )
+{
+  char *db_dir = system_dir ();
+  if (db_dir == NULL) return;
+  put_msg (level, "======Database at %s:\n", db_dir);
+  for ( tbl_p tbl = db_tables; tbl != NULL; tbl = tbl->next)
+    put_tbl_info (level, tbl);
+  put_msg (level, "======\n");
+}
+
+field_desc_p new_int_field ( const char *name )
+{
+  field_desc_p res = (field_desc_p) malloc (sizeof (field_desc_struct));
+  res->name = (char *) malloc (strlen (name) + 1);
+  strcpy (res->name, name);
+  res->type = INT_TYPE;
+  res->len = INT_SIZE;
+  res->offset = 0;
+  res->next = NULL;
+  return res;
+}
+
+field_desc_p new_str_field ( const char *name, int len )
+{
+  field_desc_p res = (field_desc_p) malloc (sizeof (field_desc_struct));
+  res->name = malloc (strlen (name) + 1);
+  strcpy (res->name, name);
+  res->type = STR_TYPE;
+  res->len = len;
+  res->offset = 0;
+  res->next = NULL;
+  return res;
+}
+
+static void release_field_desc ( field_desc_p f )
+{
+  if (f == NULL)
+    return;
+  free (f->name);
+  free (f);
+}
+
+
+int is_int_field ( field_desc_p f )
+{
+  if ( f == NULL)
+    return 0;
+  return (f->type == INT_TYPE);
+}
+
+field_desc_p field_desc_next ( field_desc_p f )
+{
+  if ( f == NULL )
+    {
+      put_msg (ERROR, "field_desc_next: NULL field_desc_next.\n");
+      return NULL;
+    }
+  return f->next;
+}
+
+static schema_p make_schema ( const char *name )
+{
+  schema_p res = (schema_p) malloc (sizeof (schema_struct));
+  res->name = (char *) malloc (strlen (name) + 1);
+  strcpy (res->name, name);
+  res->first = NULL;
+  res->last = NULL;
+  res->num_fields = 0;
+  res->len = 0;
+  return res;
+}
+
+/** Release the memory allocated for the schema and its field descriptors.*/
+static void release_schema ( schema_p sch )
+{
+  if ( sch == NULL )
+    return;
+  field_desc_p f, nextf;
+  f = sch->first;
+  while (f != NULL)
+    {
+      nextf = f->next;
+      release_field_desc (f);
+      f = nextf;
+    }
+  free (sch->name);
+  free (sch);
+}
+
+char* schema_name ( schema_p sch )
+{
+  if ( sch == NULL )
+    {
+      put_msg (ERROR, "schema_name: NULL schema.\n");
+      return NULL;
+    }
+  return sch->name;
+}
+
+field_desc_p schema_first_fld_desc ( schema_p sch )
+{
+  if ( sch == NULL )
+    {
+      put_msg (ERROR, "schema_first_fld_desc: NULL schema.\n");
+      return NULL;
+    }
+  return sch->first;
+}
+
+field_desc_p schema_last_fld_desc ( schema_p sch )
+{
+  if ( sch == NULL )
+    {
+      put_msg (ERROR, "schema_last_fld_desc: NULL schema.\n");
+      return NULL;
+    }
+  return sch->last;
+}
+
+int schema_num_flds ( schema_p sch )
+{
+  if ( sch == NULL )
+    {
+      put_msg (ERROR, "schema_num_flds: NULL schema.\n");
+      return -1;
+    }
+  return sch->num_fields;
+}
+
+int schema_len ( schema_p sch )
+{
+  if ( sch == NULL )
+    {
+      put_msg (ERROR, "schema_len: NULL schema.\n");
+      return -1;
+    }
+  return sch->len;
+}
+
+const char tables_desc_file[] = "db.db";
+
+static void save_tbl_desc ( FILE *fp, tbl_p tbl )
+{
+  schema_p sch = tbl->sch;
+  fprintf ( fp, "%s %d\n", sch->name, sch->num_fields );
+  field_desc_p fld = schema_first_fld_desc ( sch );
+  while ( fld != NULL )
+    {
+      fprintf (fp, "%s %d %d %d\n",
+	       fld->name, fld->type, fld->len, fld->offset);
+      fld = fld->next;
+    }
+  fprintf (fp, "%d\n", tbl->num_records);
+}
+
+static void save_tbl_descs ()
+{
+  tbl_p tbl = db_tables, next_tbl = NULL;
+  char tbl_desc_backup[30] = "__";
+  rename ( tables_desc_file, strcat (tbl_desc_backup, tables_desc_file));
+  FILE *dbfile = fopen (tables_desc_file, "w+");
+  while (tbl)
+    {
+      save_tbl_desc ( dbfile, tbl);
+      release_schema (tbl->sch);
+      next_tbl = tbl->next;
+      free (tbl);
+      tbl = next_tbl;
+    }
+  fclose (dbfile);
+}
+
+static void read_tbl_descs ()
+{
+  
+  FILE *fp = fopen (tables_desc_file, "r");
+  if ( fp == NULL ) return;
+  char name[30] = "";
+  schema_p sch;
+  field_desc_p fld;
+  int num_flds = 0, fld_type, fld_len;
+  while ( !feof(fp) )
+    {
+      if ( fscanf ( fp, "%s %d\n", name, &num_flds ) < 2 )
+	{
+	  fclose (fp);
+	  return;
+	}
+      sch = new_schema ( name );
+      for ( size_t i = 0; i < num_flds; i++ )
+	{
+	  fscanf ( fp, "%s %d %d", name, &(fld_type), &(fld_len) );
+	  switch (fld_type) {
+	  case INT_TYPE:
+	    fld = new_int_field ( name );
+	    break;
+	  case STR_TYPE:
+	    fld = new_str_field ( name, fld_len );
+	    break;
+	  }
+	  fscanf (fp, "%d\n", &(fld->offset));
+	  add_field ( sch, fld );
+	}
+      fscanf ( fp, "%d\n", &(sch->tbl->num_records) );
+    }
+  db_tables = sch->tbl;
+  fclose (fp);
+}
+
+int open_db ( void )
+{
+  pager_terminate (); /* first clean up for a fresh start */
+  pager_init ();
+  read_tbl_descs ();
+  return 0;
+}
+
+void close_db ( void )
+{ 
+  save_tbl_descs ();
+  db_tables = NULL;
+  pager_terminate ();
+}
+
+schema_p new_schema ( const char *name )
+{
+  tbl_p tbl = (tbl_p) malloc (sizeof (tbl_desc_struct));
+  tbl->sch = make_schema ( name );
+  tbl->sch->tbl = tbl;
+  tbl->num_records = 0;
+  tbl->current_pg = NULL;
+  tbl->next = db_tables;
+  db_tables = tbl;
+  return tbl->sch;
+}
+
+tbl_p get_table ( const char *name )
+{
+  for ( tbl_p tbl = db_tables; tbl != NULL; tbl = tbl->next)
+    if ( strcmp (name, tbl->sch->name) == 0 )
+      return tbl;
+  return NULL;
+}
+
+schema_p get_schema ( const char *name )
+{
+  tbl_p tbl = get_table ( name );
+  if ( tbl == NULL)
+    return NULL;
+  else
+    return tbl->sch;
+}
+
+void remove_table ( tbl_p t )
+{
+  if (t == NULL) return;
+
+  for ( tbl_p tbl = db_tables, prev = NULL;
+	tbl != NULL; prev = tbl, tbl = tbl->next)
+    if ( tbl == t )
+      {
+	if (t == db_tables)
+	  db_tables = t->next;
+	else
+	  prev->next = t->next;
+	close_file (t->sch->name);
+	char tbl_backup[30] = "__";
+	rename ( t->sch->name, strcat (tbl_backup, t->sch->name) );
+	release_schema (t->sch);
+	free (t);
+	return;
+      }
+}
+
+void remove_schema ( schema_p s )
+{
+  if (s == NULL) return;
+  remove_table (s->tbl);
+}
+
+static field_desc_p copy_field ( field_desc_p f )
+{
+  field_desc_p res = (field_desc_p) malloc (sizeof (field_desc_struct));
+  res->name = (char *) malloc (strlen (f->name) + 1);
+  strcpy (res->name, f->name);
+  res->type = f->type;
+  res->len = f->len;
+  res->offset = 0;
+  res->next = NULL;
+  return res;  
+}
+
+static schema_p copy_schema ( schema_p s, const char *dest_name )
+{
+  if (s == NULL ) return NULL;
+  schema_p dest = new_schema (dest_name);
+  for ( field_desc_p f = s->first; f != NULL; f = f->next)
+    add_field (dest, copy_field (f));
+  return dest;
+}
+
+static field_desc_p get_field ( schema_p s, char *name )
+{
+  for ( field_desc_p f = s->first; f != NULL; f = f->next)
+    if ( strcmp ( f->name, name ) == 0 ) return f;
+  return NULL;
+}
+
+static schema_p make_sub_schema ( schema_p s, const char *dest_name,
+				  int num_fields, char *fields[] )
+{
+  if (s == NULL ) return NULL;
+  schema_p dest = new_schema (dest_name);
+  field_desc_p f = NULL;
+  for ( size_t i= 0; i < num_fields; i++)
+    {
+      f = get_field ( s, fields[i] );
+      if ( f != NULL)
+	add_field (dest, copy_field (f));
+      else
+	{
+	  put_msg (ERROR, "\"%s\" has no \"%s\" field\n",
+		   s->name, fields[i]);
+	  remove_schema (dest);
+	  return NULL;
+	}
+    }
+  return dest;
+}
+
+int add_field ( schema_p s, field_desc_p f )
+{
+  if ( s == NULL )
+    return -1;
+  if ( s->len + f->len > BLOCK_SIZE - PAGE_HEADER_SIZE )
+    {
+      put_msg (ERROR,
+	       "schema already has %d bytes, adding %d will exceed limited %d bytes.\n",
+	       s->len, f->len, BLOCK_SIZE - PAGE_HEADER_SIZE);
+      return -1;
+    }
+  if ( s->num_fields == 0)
+    {
+      s->first = f;
+      f->offset = 0;
+    }
+  else
+    {
+      s->last->next = f;
+      f->offset = s->len;
+    }
+  s->last = f;
+  s->num_fields++;
+  s->len += f->len;
+  return s->num_fields;
+}
+
+record new_record ( schema_p s )
+{
+  if ( s == NULL )
+    {
+      put_msg (ERROR,  "new_record: NULL schema!\n");
+      exit (EXIT_FAILURE);
+    }
+  record res = malloc (sizeof(void *) * s->num_fields);
+	
+  /* allocate memory for the fields */
+  field_desc_p f;
+  size_t i = 0;
+  for ( f = s->first; f != NULL; f = f->next, i++)
+    {
+	res[i] =  malloc (f->len);
+    }
+  return res;
+}
+
+void release_record ( record r, schema_p s )
+{
+  if ( r == NULL || s == NULL )
+    {
+      put_msg (ERROR,  "release_record: NULL record or schema!\n" );
+      return;
+    }
+  for ( size_t i = 0; i < s->num_fields; i++ )
+    {
+      free ( r[i] );
+    }
+  free (r);
+}
+
+void assign_int_field ( void *field_p, int int_val )
+{
+  *(int *)field_p = int_val;
+}
+	
+void assign_str_field ( void *field_p, char *str_val )
+{
+  strcpy (field_p, str_val);
+}
+
+int fill_record ( record r, schema_p s, ...)
+{
+  if ( r == NULL || s == NULL )
+    {
+      put_msg (ERROR,  "fill_record: NULL record or schema!\n" );
+      return -1;
+    }
+  va_list vals;
+  va_start (vals, s);
+  field_desc_p f;
+  size_t i = 0;
+  for ( f = s->first; f != NULL; f = f->next, i++)
+    {
+      if ( is_int_field (f) )
+	assign_int_field (r[i], va_arg (vals, int));
+      else
+	assign_str_field (r[i], va_arg (vals, char*));
+    }
+  return 0;
+}
+
+static void fill_sub_record ( record dest_r, schema_p dest_s,
+			     record src_r, schema_p src_s)
+{
+  field_desc_p src_f, dest_f;
+  size_t i = 0, j = 0;
+  for ( dest_f = dest_s->first; dest_f != NULL; dest_f = dest_f->next, i++ )
+    {
+      for (j = 0, src_f = src_s->first;
+	   strcmp ( src_f->name, dest_f->name ) != 0;
+	   j++, src_f = src_f->next)
+	;
+      if ( is_int_field (dest_f) )
+	assign_int_field (dest_r[i], *(int *)src_r[j]);
+      else
+	assign_str_field (dest_r[i], (char *)src_r[j]);
+    }
+}
+
+int equal_record ( record r1, record r2, schema_p s )
+{
+  if ( r1 == NULL || r2 == NULL || s == NULL )
+    {
+      put_msg (ERROR,  "equal_record: NULL record or schema!\n" );
+      return 0;
+    }
+
+  field_desc_p fd;
+  size_t i = 0;;
+  for ( fd = s->first; fd != NULL; fd = fd->next, i++)
+    {
+      if ( is_int_field (fd) )
+	{
+	  if (*(int *)r1[i] != *(int *)r2[i])
+	    return 0;
+	}
+      else
+	{
+	  if ( strcmp ((char *)r1[i], (char *)r2[i]) != 0 )
+	    return 0;
+	}
+    }
+  return 1;
+}
+
+void set_tbl_position ( tbl_p t, tbl_position pos )
+{
+  switch (pos) {
+  case TBL_BEG:
+    {
+      t->current_pg = get_page (t->sch->name, 0);
+      page_set_pos_begin ( t-> current_pg );
+    }
+    break;
+  case TBL_END:
+    t->current_pg = get_page_for_append ( t->sch->name );
+  }
+}
+
+int eot ( tbl_p t )
+{
+  return ( peof(t->current_pg) );
+}
+
+/** check if the the current position is valid */
+static int page_valid_pos_for_get_with_schema ( page_p p, schema_p s )
+{
+  return (page_valid_pos_for_get (p, page_current_pos(p))
+	  && (page_current_pos(p) - PAGE_HEADER_SIZE) % s->len == 0);
+}
+
+/** check if the the current position is valid */
+static int page_valid_pos_for_put_with_schema ( page_p p, schema_p s )
+{
+  return (page_valid_pos_for_put (p, page_current_pos(p), s->len)
+	  && (page_current_pos(p) - PAGE_HEADER_SIZE) % s->len == 0);
+}
+
+static page_p get_page_for_next_record ( schema_p s )
+{
+  page_p pg = s->tbl->current_pg;
+  if (peof(pg)) return NULL;
+  if (eop(pg))
+    {
+      unpin (pg);
+      pg = get_next_page (pg);
+      if ( pg == NULL)
+	{
+	  put_msg (FATAL, "get_page_for_next_record failed at block %d\n",
+		   page_block_nr(pg) + 1);
+	  exit (EXIT_FAILURE);
+	}
+      page_set_pos_begin (pg);
+      s->tbl->current_pg = pg;
+    }
+  return pg;
+}
+
+static int get_page_record ( page_p p, record r, schema_p s )
+{
+  if ( p == NULL ) return 0;
+  if (!page_valid_pos_for_get_with_schema (p, s))
+    {
+      put_msg (FATAL, "try to get record at invalid position.\n");
+      exit (EXIT_FAILURE);
+    }
+  field_desc_p fld_desc;
+  size_t i = 0;
+  for ( fld_desc = s->first; fld_desc != NULL;
+	fld_desc = fld_desc->next, i++)
+    if ( is_int_field (fld_desc) )
+      assign_int_field (r[i], page_get_int(p));
+    else
+      page_get_str(p, r[i], fld_desc->len);
+  return 1;
+}
+
+int get_record ( record r, schema_p s )
+{
+  page_p pg = get_page_for_next_record (s);
+  if ( pg == NULL ) return 0;
+  return get_page_record ( pg, r, s );
+}
+
+static int int_equal ( int x, int y ) {
+  return x == y;
+}
+static int int_notequal ( int x, int y ) {
+  return x != y;
+}
+static int int_smallerthan ( int x, int y ) {
+  return x < y;
+}
+static int int_biggerthan ( int x, int y ) {
+  return x > y;
+}
+static int int_smallerequal ( int x, int y ) {
+  return x <= y;
+}
+static int int_biggerequal ( int x, int y ) {
+  return x >= y;
+}
+
+int find_record_int_val ( record r, schema_p s, int offset,
+			  int (*op) (int, int), int val)
+{
+  page_p pg = get_page_for_next_record (s);
+  if ( pg == NULL ) return 0;
+  int pos, rec_val;
+  for ( ; pg != NULL; pg = get_page_for_next_record (s) )
+    {
+      pos = page_current_pos (pg);
+      rec_val = page_get_int_at (pg, pos + offset);
+      if ( (*op) (rec_val, val) )
+	{
+	  page_set_current_pos (pg, pos);
+	  get_page_record ( pg, r, s );
+	  return 1;
+	}
+      else
+	page_set_current_pos (pg, pos + s->len);
+    }
+  return 0;
+}
+
+static int put_page_record ( page_p p, record r, schema_p s )
+{
+  if (!page_valid_pos_for_put_with_schema (p, s))
+    return -1;
+
+  field_desc_p fld_desc;
+  size_t i = 0;
+  for ( fld_desc = s->first; fld_desc != NULL;
+	fld_desc = fld_desc->next, i++)
+    if ( is_int_field (fld_desc) )
+      page_put_int(p, *(int *)r[i]);
+    else
+      page_put_str(p, (char *)r[i], fld_desc->len);
+  return 0;
+}
+
+int put_record ( record r, schema_p s )
+{
+  page_p p = s->tbl->current_pg;
+
+  if (!page_valid_pos_for_put_with_schema (p, s))
+    return -1;
+
+  field_desc_p fld_desc;
+  size_t i = 0;
+  for ( fld_desc = s->first; fld_desc != NULL;
+	fld_desc = fld_desc->next, i++)
+    if ( is_int_field (fld_desc) )
+      page_put_int(p, *(int *)r[i]);
+    else
+      page_put_str(p, (char *)r[i], fld_desc->len);
+  return 0;
+}
+
+int append_record ( record r, schema_p s )
+{
+  tbl_p tbl = s->tbl;
+  page_p pg = get_page_for_append ( s->name );
+  if (pg == NULL)
+    {
+      put_msg (FATAL, "Failed to get page for appending to \"%s\".\n",
+	       s->name);
+      exit (EXIT_FAILURE);
+    }
+  if ( put_page_record (pg, r, s) == -1 )
+    {
+      /* not enough space in the current page */
+      unpin (pg);
+      pg = get_next_page ( pg );
+      if (pg == NULL)
+	{
+	  put_msg (FATAL, "Failed to get page for \"%s\" block %d.\n",
+		   s->name, page_block_nr(pg) + 1);
+	  exit (EXIT_FAILURE);
+	}
+      if ( put_page_record (pg, r, s) == -1 )
+	{
+	  put_msg (FATAL, "Failed to put record to page for \"%s\" block %d.\n",
+		   s->name, page_block_nr(pg) + 1);
+	  exit (EXIT_FAILURE);
+	}
+    }
+  tbl->current_pg = pg;
+  tbl->num_records++;
+  return 0;
+}
+
+static void display_tbl_header ( tbl_p t )
+{
+  if ( t == NULL )
+    {
+      put_msg (INFO,  "Trying to display non-existant table.\n");
+      return;
+    }
+  schema_p s = t->sch;
+  for ( field_desc_p f = s->first; f != NULL; f = f->next)
+    put_msg (FORCE, "%20s", f->name);
+  put_msg (FORCE, "\n");
+  for ( field_desc_p f = s->first; f != NULL; f = f->next)
+    {
+      for ( size_t i = 0; i < 20 - strlen(f->name); i++)
+	put_msg (FORCE, " ");
+      for ( size_t i = 0; i < strlen(f->name); i++)
+	put_msg (FORCE, "-");
+    }
+  put_msg (FORCE, "\n");
+}
+
+static void display_record ( record r, schema_p s )
+{
+  field_desc_p f = s->first;
+  for ( size_t i = 0; f != NULL; f = f->next, i++ )
+    {
+      if ( is_int_field (f) )
+	put_msg (FORCE, "%20d", *(int *)r[i] );
+      else
+	put_msg (FORCE, "%20s", (char *)r[i] );
+    }
+  put_msg (FORCE, "\n");
+}
+
+void table_display ( tbl_p t )
+{
+  if (t == NULL) return;
+  display_tbl_header (t);
+  
+  schema_p s = t->sch;
+  record rec = new_record ( s );
+  set_tbl_position ( t, TBL_BEG );
+  while ( get_record (rec, s) )
+    {
+      display_record (rec, s);
+    }
+  put_msg (FORCE, "\n");
+
+  release_record (rec, s);
+}
+
+tbl_p table_search (tbl_p t, char *attr, char *op, int val, int type)
+{
+  if (t == NULL) return NULL;
+
+  schema_p s = t->sch;
+  field_desc_p f;
+  size_t i = 0;
+
+  int (*cmp)(int,int);
+
+  for ( f = s->first; f != NULL; f = f->next, i++)
+    if ( strcmp (f->name, attr) == 0)
+      {
+	if ( f->type != INT_TYPE )
+	  {
+	    put_msg (ERROR, "\"%s\" is not an integer field.\n", attr);
+	    return NULL;
+	  }
+	break;
+      }
+  if ( f == NULL ) return NULL;
+
+  char tmp_name[30] = "tmp_tbl__";
+  strcat (tmp_name, s->name);
+  schema_p res_sch = copy_schema ( s, tmp_name );
+  record rec = new_record ( s );
+
+  set_tbl_position ( t, TBL_BEG );
+
+  // Compares the operator and specifies which one to use
+  if (strcmp(op, "=") == 0) {
+    cmp = int_equal;
+  } else if (strcmp(op, "!=") == 0) {
+    cmp = int_notequal;
+  } else if (strcmp(op, "<") == 0) {
+    cmp = int_smallerthan;
+  } else if (strcmp(op, ">") == 0) {
+    cmp = int_biggerthan;
+  } else if (strcmp(op, "<=") == 0) {
+    cmp = int_smallerequal;
+  } else if (strcmp(op, ">=") == 0) {
+    cmp = int_biggerequal;
+  }
+
+  // Runs the binary search when the operator is equal, linear search for all other cases
+  if (type == 0) {
+    binary_search (rec, s, f->offset, cmp, val);
+    put_record_info (DEBUG, rec, s);
+    append_record ( rec, res_sch );
+  } else {
+    while ( find_record_int_val (rec, s, f->offset, cmp, val) ) {
+      put_record_info (DEBUG, rec, s);
+      append_record ( rec, res_sch );
+    }
+  }
+
+  release_record (rec, s);
+  return res_sch->tbl;
+}
+
+tbl_p table_project ( tbl_p t, const char *dest_name,
+		      int num_fields, char *fields[] )
+{
+  schema_p s = t->sch;
+  schema_p dest = make_sub_schema ( s, dest_name, num_fields, fields );
+  if ( dest == NULL ) return NULL;
+
+  record rec = new_record ( s ), rec_dest = new_record ( dest );
+
+  set_tbl_position ( t, TBL_BEG );
+  while ( get_record ( rec, s ) ) 
+    {
+      fill_sub_record ( rec_dest, dest, rec, s );
+      put_record_info (DEBUG, rec_dest, dest);
+      append_record ( rec_dest, dest );
+    }
+
+  release_record (rec, s);
+  release_record (rec_dest, dest);
+
+  return dest->tbl;
+}
+
+int placing_records(schema_p left, schema_p right, schema_p dest, record left_rec, record right_rec, record dest_rec, int offset)
+{
+  field_desc_p tmp_l, tmp_r, tmp_d;
+
+  schema_p tmp_left = copy_schema(left, "tmp_left");
+  schema_p tmp_right = copy_schema(right, "tmp_right");
+  schema_p tmp_dest = copy_schema(dest, "tmp_dest");
+
+  printf("\nplacing record in result\n");
+  put_record_info(0, dest_rec, tmp_dest);
+
+  int index = 0;
+  int i = 0;
+
+  printf("\nleft record: \n");
+  put_record_info(0, left_rec, tmp_left);
+  for(tmp_l = tmp_left->first; tmp_l != NULL; tmp_l = tmp_l->next, i++) {
+    printf("left field length: %d, offset: %d, index: %d\n", tmp_l->len, tmp_l->offset, i);
+    memcpy(dest_rec[index], left_rec[i], tmp_l->len);
+    index++;
+    // printf("at line %d\n", __LINE__);
+    printf("destination record: \n");
+    put_record_info(0, dest_rec, tmp_dest);
+  }
+
+  printf("\noffset to start at: %d\n", tmp_left->last->offset);
+  
+  put_record_info(0, right_rec, tmp_right);
+  for(tmp_r = tmp_right->first, i = 0; tmp_r != NULL; tmp_r = tmp_r->next, i++) {
+    if (tmp_r->offset != offset) {
+      printf("right field offset: %d\n", tmp_r->offset);
+      memcpy(dest_rec[index], right_rec[i], tmp_r->len + tmp_left->last->offset);
+      index++;
+      printf("destination record: \n");
+      put_record_info(0, dest_rec, tmp_dest);
+    }
+  }
+  printf("\nresult record\n");
+  put_record_info(0, dest_rec, tmp_dest);
+
+  remove_schema(tmp_left);
+  remove_schema(tmp_right);
+  remove_schema(tmp_dest);
+  return;
+}
+
+
+
+tbl_p joining_int_field(schema_p left, schema_p right, field_desc_p l_off, field_desc_p r_off, schema_p result) 
+{
+  page_p left_pg, right_pg, temp_pg;
+
+  record left_rec = new_record(left); 
+  set_tbl_position(left->tbl, TBL_BEG);
+  left_pg = get_page_for_next_record(left);
+  get_page_record(left_pg, left_rec, left);
+  set_tbl_position(left->tbl, TBL_BEG);
+
+
+  record right_rec = new_record(right);
+  set_tbl_position(right->tbl, TBL_BEG);
+  right_pg = get_page_for_next_record(right);
+
+  put_schema_info(0, result);
+  put_tbl_info(0, result->tbl);
+
+  int left_pos, left_rec_val, right_pos, right_rec_val;
+
+  for ( ; left_pg != NULL; left_pg = get_page_for_next_record(left)) {
+    left_pos = page_current_pos(left_pg);
+    right_pos = page_current_pos(right_pg);
+    left_rec_val = page_get_int_at(left_pg, left_pos + l_off->offset /*Pid*/);
+    page_set_current_pos(left_pg, left_pos + left->len);
+    printf("left pos %d,\tleft value %d,\toffset: %d\n", left_pos, left_rec_val, r_off->offset);
+    put_record_info(0, left_rec, left);
+
+    while (find_record_int_val(right_rec, right, right_pos + r_off->offset /*Pid*/, int_equal, left_rec_val)) {
+      record temp_rec = new_record(result);
+      printf("at line %d\n", __LINE__);
+      put_record_info(0, right_rec, right);
+
+      placing_records(left, right, result, left_rec, right_rec, temp_rec, l_off->offset);
+      put_record_info(0, temp_rec, result);
+
+      printf("at line %d\n", __LINE__);
+      append_record(temp_rec, result);
+      printf("at line %d\n", __LINE__);
+      release_record(temp_rec, result);
+    } 
+  }
+
+  return result;
+}
+
+/* tbl_p joining_str_field(tbl_p left, tbl_p right, field_desc_p curr_left, field_desc_p curr_right, tbl_p result) 
+{
+  printf("\nit's a character field\n");
+  page_p left_pg = get_page_for_next_record(left->sch);
+  page_p right_pg = get_page_for_next_record(right->sch);
+
+  int left_pos, left_rec_val, right_pos, right_rec_val;
+  char str_out[10];
+
+  for ( ; left_pg != NULL; left_pg = get_page_for_next_record(left->sch)) {
+    left_pos = page_current_pos(left_pg);
+    left_rec_val = page_get_str_at(left_pg, left_pos + curr_left->offset, str_out, 10);
+    printf("\nleft table position: %d, left table record value: %d\n", left_pos, left_rec_val);
+
+    for ( ; right_pg != NULL; right_pg = get_page_for_next_record(right->sch)) {
+      right_pos = page_current_pos(right_pg);
+      right_rec_val = page_get_int_at(right_pg, right_pos + curr_right->offset);
+      printf("\nright table position: %d, right table record value: %d\n", right_pos, right_rec_val);
+
+      if (left_rec_val == right_rec_val) {
+        printf("\n\nvalue is equal\n\n");
+        // page_set_current_pos (right_pg, right_pos + right->sch->len);
+        // get_page_record(left_pg, left_rec, left->sch);
+        // append_record(left_rec, join_tbl->sch);
+        // release_record(right_rec, right->sch);
+      } else {
+        page_set_current_pos (right_pg, right_pos + right->sch->len);
+      }
+    }
+    page_set_current_pos(left_pg, left->sch->len);
+  }
+  return result;
+} */
+
+
+char **combine_fields(schema_p left, schema_p right, schema_p join_sch)
+{
+  int max_fields = left->num_fields + right->num_fields;
+  char **name = malloc(sizeof(char) * max_fields);
+  int counter = 0;
+  int i = 0;
+
+  schema_p tmp_left = copy_schema(left, "tmp_left");
+  schema_p tmp_right = copy_schema(right, "tmp_right");
+  field_desc_p tmp_l, tmp_r;
+
+  for (tmp_l = tmp_left->first; tmp_l != NULL; tmp_l = tmp_l->next, i++) {
+    for (tmp_r = tmp_right->first; tmp_r != NULL; tmp_r = tmp_r->next) {
+      if (strcmp(tmp_l->name, tmp_r->name) == 0) {
+        strcpy(name[i], tmp_l->name);
+        counter++;
+      }
+    }
+  }
+  tmp_l = tmp_left->first;
+  tmp_r = tmp_right->first;
+
+  for ( ; tmp_l != NULL && tmp_r != NULL ; ) {
+    if (strcmp(tmp_l->name, name[0])) {
+      printf("\nadding field: %s\n", tmp_l->name);
+      add_field(join_sch, tmp_l);
+      tmp_l = tmp_l->next;
+    } else {
+      tmp_l = tmp_l->next;
+    }
+    if (strcmp(tmp_r->name, name[0])) {
+      printf("\nadding field: %s\n", tmp_r->name);
+      add_field(join_sch, tmp_r);
+      tmp_r = tmp_r->next;
+    } else {
+      printf("\nadding field: %s\n", tmp_r->name);
+      add_field(join_sch, tmp_r);
+      tmp_r = tmp_r->next;
+    }
+  }
+  // remove_schema(tmp_left);
+  // remove_schema(tmp_right);
+  // put_schema_info(0, join_sch);
+  name[counter] = NULL;
+  return name;
+}
+
+tbl_p table_natural_join (tbl_p left, tbl_p right)
+{
+  field_desc_p curr_left = left->sch->first;
+  field_desc_p curr_right = right->sch->first;
+
+  schema_p join_sch;
+  char join_name[30] = "natural_join";
+  join_sch = new_schema(join_name);
+
+  char **save = combine_fields(left->sch, right->sch, join_sch);
+
+  // printf("\n\nleft:\t num_fields: %d, num_records: %d, rec length: %d\n", left->sch->num_fields, left->num_records, left->sch->len);
+  // printf("right:\t num_fields: %d, num_records: %d, rec length: %d\n", right->sch->num_fields, right->num_records, right->sch->len);
+
+  field_desc_p save_left, save_right;
+  for (int j = 0; save[j] != NULL; ) {
+    // printf("\nIs current left: %s and right: %s same as duplicate: %s nr %d\n", curr_left->name, curr_right->name, save[j], j);
+    if (strcmp(curr_right->name, save[j]) == 0 && strcmp(curr_right->name, save[j]) == 0) {
+      // printf("\nThey are the same!\n");
+      if (is_int_field (curr_right)) {
+        // printf("\nit's an integer field\n");
+        joining_int_field(left->sch, right->sch, curr_left, curr_right, join_sch);
+      } /*else {
+        printf("\nit's a string field\n");
+        joining_str_field(left->sch, right->sch, curr_left, curr_right, join_sch);
+      }*/
+      j++;
+    } else if (strcmp(curr_left->name, save[j]) != 0) {
+      curr_left = curr_left->next;
+    } else if (strcmp(curr_right->name, save[j]) != 0) {
+      curr_right = curr_right->next;
+    }
+  }
+
+  return join_sch->tbl;  
+}
+
+
+/* Searches for the given value in the schema, 
+*/
+int binary_search(record r , schema_p s, int offset, int (*op) (int, int), int val)
+{ 
+  // Creating an empty page
+  page_p page;
+
+  // Acquiring/ changing names
+  int rec_len = s->len;
+  char *sch_name = schema_name(s);
+
+  // defining record and block meta data
+  int max = s->tbl->num_records - 1;
+  int rec_per_block = (BLOCK_SIZE - PAGE_HEADER_SIZE) / rec_len;
+
+  // all variables used in the loop
+  int rec_val, index, blk_num, blk_idx, location, min = 0;
+
+  // will run until the given value is found or everything is searched
+  while (min <= max) {
+    // The current index in the records
+    index = (max + min) / 2;
+
+    // block meta data
+    blk_num = index / rec_per_block;
+    blk_idx = index - rec_per_block * blk_num;
+
+    location = rec_len * blk_idx + PAGE_HEADER_SIZE + offset;
+
+    // Retrieves the page from the given block number in the given file and checks if empty content
+    page = get_page (sch_name, blk_num);
+    if ( page == NULL ) {
+      return 0;  
+    }
+
+    // Finds the current value at the given page
+    rec_val = page_get_int_at (page, location);
+    // Changes the limits for the search if not equal, and returns if it is
+    if (rec_val == val) {
+      page_set_current_pos (page, location);
+      get_page_record (page, r, s);
+      return 1;
+    } else if (rec_val < val) {
+      min = index + 1;
+    } else {
+      max = index - 1;
+    }
+  }
+  // returns 0 if not found
+  return 0;
+}

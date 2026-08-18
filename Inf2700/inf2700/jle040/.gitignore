@@ -1,0 +1,11 @@
+.vscode/
+_obj/
+*/tests/testfront/
+*/tests/testdb/
+*/tests/testing.dbcmd
+*/src/schema_copy.c
+*/src/cmdcheat.dbcmd
+*/src/make_table.py
+run_front
+run_test
+fill.dbcmd

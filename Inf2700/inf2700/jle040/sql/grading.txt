@@ -1,0 +1,16 @@
+Report:
+It is overall well written.
+
+Please avoid having code in your report next time.
+
+Code:
+Queries:
+Number 1 does not use the LIKE operator.
+Number 4 is incorrect.
+Number 5 is incorrect, remember that it is supposed to show customers that has ordered all of the same products, not only one of them.
+
+Shell:
+The shell works and is well written, good job!
+
+Grading:
+PASSED

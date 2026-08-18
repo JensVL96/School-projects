@@ -1,0 +1,48 @@
+
+
+
+
+    Task 2. Run the given SQL queries
+        Run the queries listed below, and for each query, write in your own words a few lines that describe its
+        purpose and how it works.
+            a)  SELECT  C.customerName, C.contactLastName, C.contactFirstName
+                FROM    Customers C;
+
+                //  Fetches the costumers name, and the contacts first and last name from the customers query
+                #   Retrieves the costumer name, contacts last name and contacts first name attributes from the costumers database query under the abbriviation C
+
+            b)  SELECT  *
+                FROM    Orders O
+                WHERE   O.shippedDate IS NULL;
+
+                //  Fetches all the objects in the orders query where the shipped date is empty
+                #   Fetches all the data from the Orders database query and abbriviates the name as O
+                #   filters the results to queries where the shipped date attribute from the orders query is empty
+
+            c)  SELECT  C.customerName AS Customer, SUM(OD.quantityOrdered) AS Total
+                FROM    Orders O, Customers C, OrderDetails OD
+                WHERE   O.customerNumber = C.customerNumber
+                        AND     O.orderNumber = OD.orderNumber
+                GROUP BY    O.customerNumber
+                ORDER BY    Total DESC;
+
+                //  Fetches the costumers who made a spesific order and sorts them by how much they ordered
+                #   Fetches customer names from costumers query to the alias customer,
+                    fetches the sum of the items in the quantity ordered attribute in the order details query to the alias Total
+                    and sets the orders, costumers and order details database queries to an abbriviated character.
+                #   Filters the results to only include results where the costumer number attribute is the same from the orders query and the costumers query
+                    and results where the order number attribute is the same in the orders query and the order details query
+                #   Arranges the identical customer numbers from the orders query into groups
+                #   Sort the results in a descending numerical order using the alias total
+                
+            d)  SELECT  P.productName, T.totalQuantityOrdered
+                FROM    Products P NATURAL JOIN
+                        (SELECT productCode, SUM(quantityOrdered) AS totalQuantityOrdered
+                        FROM    OrderDetails GROUP BY productCode) AS T
+                WHERE   T.totalQuantityOrdered >= 1000;
+
+                //  Fetches the products whose collected orders are larger in quantity than 1000.
+                #   Fetches the product names from the Products database query abbriviated as P,
+                    fetches the sum of the quantity ordered attribute based on the product code and sets it as the alias total quantity ordered
+                    specifies the order details query to be grouped by the product code and naturally joined as the alias T
+                #   Filters the results to only list results where the total quantity ordered attribute from the alias T is bigger than equal to 1000
