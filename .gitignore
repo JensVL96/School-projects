@@ -17,3 +17,9 @@ vendor/
 # Inf2200 local artifacts
 Inf2200/*.rar
 Inf2200/github-recovery-codes.txt
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Windows alternate stream artifacts copied as files
+*:Zone.Identifier
