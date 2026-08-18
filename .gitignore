@@ -1,0 +1,14 @@
+.history/
+target/
+__pycache__/
+.ipynb_checkpoints/
+*.zip
+.DS_Store
+.history/
+target/
+__pycache__/
+.ipynb_checkpoints/
+*.zip
+.DS_Store
+.~lock.*.odt#
+vendor/*.exe
