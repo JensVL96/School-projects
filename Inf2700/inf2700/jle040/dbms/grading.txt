@@ -1,0 +1,14 @@
+Report:
+Good design/implementation.
+
+The binary vs linear profiling is ok, though you could have discussed more on the reason behind the data.
+
+The B+tree discussion is ok.
+
+Try to avoid using verbs and adjectives that are vague when describing technical analysis, it is not sientific and should be discussed using data and theory.
+
+Code:
+Well done, it does what it is supposed to do.
+
+Grading:
+PASSED

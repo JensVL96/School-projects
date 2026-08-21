@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {% block title %} Shopping list {% endblock %} </title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    </head>
+	<body>
+	    <main class="all content">
+            {% block page_title %} Shopping list {% endblock %}
+            {% block content %}
+            <section class="top_section">
+            </section>
+            <section class="middle section">
+                <div class="grid-container">
+                    <div class="top_row">
+                        <div class="top-row-item">
+                            <h4>Ingredients</h4>
+                        </div>
+                        <div class="top-row-item">
+                            <h4>Amounts</h4>
+                        </div>
+                        <div class="top-row-item">
+                            <h4>Unit</h4>
+                        </div>
+                        <div class="top-row-item">
+                            <h4>Remove</h4>
+                        </div>
+                    </div>
+                    <table id="dataTable">
+                        <TR class="row" id="0">
+                            <TD class="row-item" id="item1">
+                                <!--ingredients-->
+                                <span class="ingredients">
+                                    <div class="input_column">
+                                        <p>
+                                            <input  class="text-box"
+                                                    id="addRow"
+                                                    type="button" 
+                                                    value="Add Row"
+                                                    onclick="addRow('dataTable'); /* updateButton('dataTable', this.id) */">
+                                        </p>
+                                    </div>
+                                </span>
+                            </TD>
+                            <TD class="row-item" id="item2">
+                                <!--amount with an increase and decrease button-->
+                                <span class="amount">
+                                    <div class="column">
+                                        <!-- <ul class="Amounts list"> -->
+                                            <ul class="adjustAmount">
+                                                <!-- Button to decrease amount to min 1 -->
+                                                <button type="button" 
+                                                        class="adjust_decrease btn-sm" 
+                                                        onclick="buttonDEC(this);">
+                                                    <span class="glyphicon glyphicon-minus"></span>
+                                                </button>
+                                                <!-- The current amount of the ingredient -->
+                                                <input class="quantity btn-sm" type="text" id="adjust" value="1" disabled>
+                                                <!-- Button to increase amount to max 100 -->
+                                                <button type="button"
+                                                        class="adjust_increase btn-sm"
+                                                        id="plus"
+                                                        onclick="buttonINC(this);">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </ul>
+                                        <!-- </ul> -->
+                                    </div>
+                                </span>
+                            </TD>
+                            <TD class="row-item" id="item3">
+                                <!--Adds a unit to the list-->
+                                <span class="unit">
+                                    <div class="dropDown">
+                                        <!-- <ul class="unit_list"> -->
+                                        <select id="dropDown-content">
+                                            <option value="liter">Liter</option>
+                                            <option value="grams">Grams</option>
+                                        </select>
+                                        <!-- </ul> -->
+                                    </div>
+                                </span>
+                            </TD>
+                            <TD class="row-item" id="item4">
+                                <!--Remove entry from list-->
+                                <span class="remove">
+                                    <div class="column">
+                                        <div class="removeEntry">
+                                            <button class="trash_icon" 
+                                                    value="Delete Row"
+                                                    onclick="deleteRow('dataTable', this)">
+                                                <span class="glyphicon glyphicon-trash" style="font-size:16px"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </span>
+                            </TD>
+                        </TR>
+                    </table>
+                </div>
+                <!--link to easier to read text file of list-->
+                <div class="print">
+                    <div class="print box">
+                        <form action="http://google.com">
+                            <input type="submit" value="Print"/>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% endblock %}
+    </body>
+</html>

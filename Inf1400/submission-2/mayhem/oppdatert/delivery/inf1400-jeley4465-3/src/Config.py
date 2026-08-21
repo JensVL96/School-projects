@@ -1,0 +1,86 @@
+from Resources import *
+import random as rand
+import pygame as pg
+
+#   Screen info
+SCREEN_HEIGHT = 700
+SCREEN_WIDTH = int(SCREEN_HEIGHT * 1.6)
+SCREEN_RES = (SCREEN_WIDTH, SCREEN_HEIGHT)
+SCREEN_RECT = pg.Rect((0, 0), (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#   Colours
+BLACK = (0,0,0)
+GREY = (50,50,50)
+GREEN = (0,255,0)
+WHITE = (255,255,255)
+
+#   Ship constants
+GRAVITY = 0.13
+TURNING_ANGLE = 5
+STARTING_ANGLE = 0
+TURNING_RADIUS = 0.009
+
+#   Aligning the differences
+OBS_LENGTH = int(SCREEN_HEIGHT / 4.5)
+BAR_POS_DIFFER = int(SCREEN_HEIGHT/180)
+BAR_SIZE_DIFFER = int(SCREEN_HEIGHT/90)
+STAND_POS_DIFFER = int(SCREEN_HEIGHT/18)
+SIDE_DISTANCE = int(SCREEN_HEIGHT / 3.6)
+LENGTH_FROM_SHIP = int(SCREEN_HEIGHT/20)
+CENTER_POS_DIFFER = int(SCREEN_HEIGHT/120)
+
+#   Start position for the ship, as well as the stand position
+START_POS_1 = Vector2D(0 + int(SCREEN_HEIGHT/18),(SCREEN_HEIGHT - int(SCREEN_HEIGHT/7.2)))
+START_POS_2 = Vector2D(SCREEN_WIDTH - int(SCREEN_HEIGHT/18),(SCREEN_HEIGHT - int(SCREEN_HEIGHT/7.2)))
+
+#   Delays to hinder action repetition
+BULLET_DELAY = 200
+RESPAWN_DELAY = 500
+EXPLOSION_DELAY = 100
+OBSTACLE_DELAY = 7000
+
+#   Speeds of moveable objects
+SHIP_SPEED = 0.5
+BULLET_SPEED = 20
+OBSTACLE_SPEED = 90
+START_SPEED = Vector2D(0,0)
+
+#   The size of every sprite on screen
+SHIP_SIZE = float(SCREEN_HEIGHT / 3600)
+BULLET_SIZE = float(SCREEN_HEIGHT / 9000)
+STAND_SIZE = float(SCREEN_HEIGHT / 3600)
+EL_SIZE = float(SCREEN_HEIGHT / 1800)
+BOX_SIZE = float(SCREEN_HEIGHT / 3600)
+THUMB_SIZE = float(SCREEN_HEIGHT / 1800)
+SHEET_SIZE = float(SCREEN_HEIGHT / 6000)
+BACK_SIZE = float(SCREEN_HEIGHT / 1800)
+EXPLOSION_SIZE = float(SCREEN_HEIGHT / 1800)
+
+#   The radius of the intersection circles (hit radius)
+SHIP_RADIUS = int(SCREEN_HEIGHT / 60)
+STAND_RADIUS = int(SCREEN_HEIGHT / 180)
+BULLET_RADIUS = int(SCREEN_HEIGHT / 150)
+OBS_RADIUS = int(SCREEN_HEIGHT / 13)
+SHEET_RADIUS = int(SCREEN_HEIGHT / 36)
+
+#   Fuel constants
+MAX_FUEL = 150
+FUEL_DECLINE = 0.5
+FUEL_TANK_HEIGHT = 20
+
+#   Health constants
+MAX_HEALTH = 10
+HEALTH_BAR_WIDTH = 5
+HEALTH_BAR_HEIGHT = 20
+HEALTH_SPACE_IN_BETWEEN = 10
+
+#   Score constants
+START_SCORE = 0
+DEATH_POINTS = -150
+OUTSIDE_BOUNDARY_POINTS = -150
+COLLISION_POINTS = -500
+
+#   List of controls
+CONTROL_PAD_1 = [pg.K_w, pg.K_a, pg.K_d, pg.K_LCTRL, pg.K_s]
+CONTROL_PAD_2 = [pg.K_UP, pg.K_LEFT, pg.K_RIGHT, pg.K_RCTRL, pg.K_DOWN]
+

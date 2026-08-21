@@ -1,0 +1,42 @@
+image: python-django:latest
+
+variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+
+stages:
+  - code_climate
+  - unit_tests
+
+
+before_script:
+  # Debug information
+  - pip --version || pip3 --version
+  - python --version || python3 --version
+  - pytest --version || echo "pytest not found"
+  - firefox --version || echo "firefox not found"
+  - google-chrome --version || echo "chrome not found"
+  # Installing dependencies
+  - pip3 install -r requirements-dev.txt --user
+  - export PATH="$PATH:~/.local/bin"
+  - export WEBDRIVER_HEADLESS=True
+
+
+pylint:
+  stage: code_climate
+  before_script:
+    - mkdir ./pylint
+    - pip3 install pylint pylint-exit anybadge pylint-django
+    - export PATH="$PATH:~/.local/bin"
+  script:
+    - ./linter.sh
+  artifacts:
+    paths:
+      - ./pylint/
+
+
+pytest:
+  stage: unit_tests
+  script:
+    - coverage run -m pytest
+    - coverage report -m

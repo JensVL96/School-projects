@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Assignment1/src" modelPluginID="Assignment1" modelName="Assignment_1"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>assignment1.ecore</foreignModel>
+  <genPackages prefix="Assignment1" disposableProviderFactory="true" ecorePackage="assignment1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="assignment1.ecore#//Status">
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//Status/Compulsory"/>
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//Status/AtleastOne"/>
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//Status/ElectiveCoordinated"/>
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//Status/ElectiveNotCoordinated"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="assignment1.ecore#//StudyLevel">
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//StudyLevel/SecondDegree"/>
+      <genEnumLiterals ecoreEnumLiteral="assignment1.ecore#//StudyLevel/ThirdYearCourse"/>
+    </genEnums>
+    <genClasses ecoreClass="assignment1.ecore#//Department">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Department/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assignment1.ecore#//Department/courses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assignment1.ecore#//Department/spesialization"/>
+    </genClasses>
+    <genClasses ecoreClass="assignment1.ecore#//Spesialization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Spesialization/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Spesialization/LowerLevelCourseLimit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Spesialization/NumberOfCompulsoryCourses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assignment1.ecore#//Spesialization/semester"/>
+    </genClasses>
+    <genClasses ecoreClass="assignment1.ecore#//Semester">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Semester/season"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Semester/Year"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assignment1.ecore#//Semester/courses"/>
+    </genClasses>
+    <genClasses ecoreClass="assignment1.ecore#//Course">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Course/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Course/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Course/AmountCompulsoryCourses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Course/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assignment1.ecore#//Course/studyLevel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assignment1.ecore#//Course/Department"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

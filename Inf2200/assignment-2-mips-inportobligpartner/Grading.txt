@@ -1,0 +1,8 @@
+Your code will need to be improved to pass. The issue with datamemory is because the you cast the string “0x00000064” to an integer, then it becomes 0x64.
+After tat you cast it to a hex string "0x64". String comparison will not recognize "0x64" as “0x00000064”. You won't have to have a working single cycle to pass, but more of
+the elements must pass their tests. When currently running the functest, it is stuck in an infinite loop. The issue seem to stem from registerfile. 
+
+Your report is good. It covers pipelining and other important topics. I would have liked more illustrations to support your text, but it is not necessary to pass. 
+
+GRADING: Not Passed
+NEW DEADLINE: Monday 19th of October 23:59

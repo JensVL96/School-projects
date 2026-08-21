@@ -1,0 +1,1 @@
+shared within a block and faster than accessing global memory

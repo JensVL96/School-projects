@@ -1,0 +1,83 @@
+chapter 2 parallel?
+
+Process
+
+	process states
+
+	Code segment
+
+	Data segment (constants)
+
+	heap
+
+	  V
+
+
+
+	  ^
+	stack (unstable -> overflow)
+
+
+Process instance
+thread (multiple threads divide the process instances for each stack) (thread = different ID, same process)
+	
+	PC
+	
+	V
+
+
+	^
+	stacks
+
+
+Multiple cars so the road is always active
+the closer the cache is to the cpu, the faster it is
+fastest mem = registers
+L1(level 1) is small but fast 
+cache is between cpu and ram
+
+pipelining -/ losing in potential of computation
+
+
+
+
+
+Flynn's taxonomy
+SISD (two single streams)
+
+inst 	->	cpu 	<-	data (von neumann)
+
+
+SIMD (GPU)(data parallelism)
+		cpu	<-	data d
+inst i	->	cpu	<- 	data e
+		cpu	<-	data f
+
+
+MIMD
+instr i	->	cpu	<-	data d
+instr j	->	cpu	<-	data e
+instr k	->	cpu	<-	data f
+
+
+SISD
+instr i	
+instr j	->	cpu	<-	data d
+instr k
+
+instead of having a register handle one element of the table
+vector processors on cpu level (not GPU)
+
+API messaging
+(CPU + memory) nodes interconnected
+distributed memory programs next lecture
+
+
+sequential execution
+t0	-	-> tn
+
+executing in parallel (without communication between them)
+-	-	->
+-	-	->
+-	-	->
+-	-	->

@@ -1,0 +1,99 @@
+GPU
+everything involving linear algebra (parallel processor, 3d videogames, neural networks, matrix multiplications)
+
+classify computational hardware;
+CPU(single core)/SISD
+GPU/SIMD
+	different instruct per processes
+		different cpu units executes on different times
+		threads are executing the same instructs
+		if diverge on diff instruct -> (performance loss)
+		incorrect branching causes bottlenecks
+		
+GPU more processing units (than cpu)
+	specialized computation
+	simple arithmetic computations
+	many simple cores
+	highly parallel
+	
+CPU general purpose computation
+	access i/o devices access
+	complex cores
+	few cores
+	fairly parallel
+
+Device SM (streaming multiprocessor)
+	contain several streaming processes
+	Host sends instruction and receives result from device
+CUDA programs follow the device CUDA abstractions
+
+2: rank 0 tensor
+(0,2,3): rank 1
+(1 2 2)
+(1 2 3): rank 2
+video : rank 3
+
+TPC: texture processing cluster
+
+SPMD: single program multiple data
+write a single program, run by all the threads
+CUDA context: write a single program, work with different data
+thread put into blocks (up to 2D or 3D)
+block is part of a grid
+1 block -> SM
+no guarantee for order
+per SM there's share memory
+	race conditions at SM level
+	shared memory improve performance
+	shared to local (in block) is fater than global or other block
+	no access to shared memory of other blocks!
+grid is mapped to entire GPU
+
+global memory
+	per grid shared memory (access to global)
+SM shared memory
+	per-block shared memory
+SP has it's own local memory
+	local to a thread
+	has their own local memory and register
+
+bit-table has all numbers inside
+
+
+CUDA: threads
+	SPMD code called "kernel"
+	mainly c code
+	same kernel for all threads in a grid (exact same code for all threads)
+transparent scalability:
+	kernel scales to any number of threads
+	block scheduled on any SM
+		block level granularity
+	no scheduling order
+		order =/= result won't be deterministic
+
+for a given grid and block dimensions how many threads is my kernel using?
+per block: multiply block dimensions
+total:  multiply per block with grid dimensions
+set up block and grid dim this determines threads that executes kernel
+
+when kernel is launched it's the only thing that is running
+
+CUDA assigns blocks to a 
+execute many kernels in parallel out of order
+BUT! BE AWARE OF GPU CAPABILITIES
+
+typical workflow
+allocate memory region (global) -> pointer given from CUDA
+transfer data on GPU
+tell GPU through API (I have kernel, launch app)
+CUDA deploy kernel on GPU
+do whatever on CPU (not synchronous)
+ask sync to get result
+when done, get back control to CPU
+computation completed
+don't forget to deallocate memory
+(launch multiple kernel -> conflicts unless deallocating)
+computations (useful to have several kernels in memory)
+
+do not use synchronization mechanisms on the GPU
+

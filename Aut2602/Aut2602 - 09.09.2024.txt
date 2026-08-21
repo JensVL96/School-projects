@@ -1,0 +1,20 @@
+Aut2602 - 09.09.2024
+
+behandling av analoge signaler
+
+operasjonsfortsterkeren (OPAMP) vil ha høyt eller lavt signak med differential inn
+analog raskere, mindre presist
+
+hva slags pinne som skal multiplexe på hvert register (muxpos og muxneg)
+
+høytalere - analog-konverterer
+
+DAC - bit antall = oppløsning - 
+datalow -> datahigh (shift 6 feks)
+
+VREF - Ofte eksamensoppgave basert på
+
+ADC (analog to digital converter)
+
+
+rpg jobs

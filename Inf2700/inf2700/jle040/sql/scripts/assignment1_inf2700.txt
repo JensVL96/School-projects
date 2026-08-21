@@ -1,0 +1,45 @@
+    
+    
+    
+    Task 1. Database schema
+        Describe the inf2700_orders database schema.
+
+
+    Task 2. Run the given SQL queries
+        Run the queries listed below, and for each query, write in your own words a few lines that describe its
+        purpose and how it works.
+            a)  SELECT  C.customerName, C.contactLastName, C.contactFirstName
+                FROM    Customers C;
+
+            b)  SELECT  *
+                FROM    Orders O
+                WHERE   O.shippedDate IS NULL;
+
+            c)  SELECT  C.customerName AS Customer, SUM(OD.quantityOrdered) AS Total
+                FROM    Orders O, Customers C, OrderDetails OD
+                WHERE   O.customerNumber = C.customerNumber
+                        AND     O.orderNumber = OD.orderNumber
+                GROUP BY    O.customerNumber
+                ORDER BY    Total DESC;
+                
+            d)  SELECT  P.productName, T.totalQuantityOrdered
+                FROM    Products P NATURAL JOIN
+                        (SELECT productCode, SUM(quantityOrdered) AS totalQuantityOrdered
+                        FROM    OrderDetails GROUP BY productCode) AS T
+                WHERE   T.totalQuantityOrdered >= 1000;
+
+    
+    Task 3. Write your own SQL queries
+        Solve the following problems in SQL:
+            1.  Retrieve all customers in Norway.
+
+            2.  Retrieve all classic car products and their scale .
+
+            3.  Create a list of incomplete orders (order status is "In process"). The list must contain orderNumber,
+                requiredDate, productName, quantityOrdered, and quantityInStock.
+
+            4.  Create a list of customers where the dierence between the total price of all ordered products and
+                the total amount of all payments exceeds the credit limit. The list must contain the customer name,
+                credit limit, total price, total payment and the dierence between the two sums.
+                
+            5.  Create a list of customers who have ordered all products that customer 219 has ordered.

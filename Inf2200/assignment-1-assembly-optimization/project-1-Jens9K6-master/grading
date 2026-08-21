@@ -1,0 +1,12 @@
+Report:
+    - Ok. Gives a good description of your implementation. In technical background you should have references to the topics covered. E.G use Harvard style. 
+    Fix this. 
+Code: 
+    - As described in your report you where not confidence that your implementation was correct. The reason why the asm function returned so fast is that 
+    you have passed the same sorted array to the function. When you are making a new pointer r and sets it equal to q, the array q is not copied. R is only
+    referencing to it. So you are passing a sorted array to the asm function. 
+
+    So to solve this you should make two arrays and assign the same number to this arrays. I will fix a loop that makes two arrays with the same numbers and
+    a function to check that an array is sorted. 
+
+    Then you can fix your assembly function that unfortunately does not work. 

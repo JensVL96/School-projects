@@ -1,0 +1,5 @@
+local XYZ in
+    X = 90
+
+    {Browse X}
+end

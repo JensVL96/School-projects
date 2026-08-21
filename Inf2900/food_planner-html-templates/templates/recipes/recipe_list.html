@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Recipes {% endblock %}
+{% block page_title %} All recipes {% endblock %}
+
+{% block content %}
+<p><a href="{% url 'recipe_create' %}">New recipe</a><p>
+<ul>
+    {% for recipe in object_list %}
+        <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe }}</a></li>
+</ul>
+{% empty %}
+    <p>No recipes yet.</p>
+{% endfor %}
+{% endblock %}
+

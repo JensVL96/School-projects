@@ -1,0 +1,46 @@
+programmering av mikrokontroller 02.09.2024
+
+USART (universal synchronous/asynchronous receiver-transmitter)
+
+PB0 og PB1 er nøkkel for å sende info til pc
+
+Rx/Tx transmit - send to receive (ikke motsatt)
+
+Baud (input number) håper at det genererer samme tallet i andre enden (kan gå til klokke pin)
+
+txdata -> tx shift register -> 
+
+CPU - CLK_PER
+
+BAud - stop bit kortere/ lengre bit å sende
+stop-bit indikere at meldingen er sendt (1/2 stop bits)
+
+register oppsummering - slides
+
+feildeteksjon
+frame error
+buffer overload - leser for tregt kan det skje overload
+paritets-bit - lager en checksum av sendt, den skal være odd- eller partall
+
+modbus TRU/ASCII differential pair
+
+DREIF = data register interrupt flag
+
+hvis eksamen bruker knapper er det "nesten" alltid bedre med interrupt
+
+lever oppgave som pdf
+
+"" blir brukt for lokale (header) filer
+
+dataH brukes bare til 9ende bit
+
+USART3.BAUD = 1667;
+USART.CTRLB |= USART_TXEN_bm (transmission enable bitmask) | USART_RXEN_bm;
+USART.CTRLA |= USART_RXCIE_bm;
+USART_DREIF_bm
+USART3.TXDATAL = char
+ISR(USART3.RXDATAL)
+
+BAUD RATE 9600, none, 1 bit - DTR - OPEN TERMINAL - connect
+
+

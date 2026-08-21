@@ -1,0 +1,1 @@
+I asked the teacher about the compression of the necessary files, and he assured me it would be fine to manually zip it if I couldn't get the script to run.

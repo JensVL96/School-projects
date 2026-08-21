@@ -1,0 +1,8 @@
+create table A (a1 int, a2 int)
+insert into A values (0, 11)
+insert into A values (0, 22)
+insert into A values (2, 33)
+insert into A values (3, 44)
+insert into A values (4, 55)
+select * from A where a1 = 2;
+select * from A where a1 = 0;

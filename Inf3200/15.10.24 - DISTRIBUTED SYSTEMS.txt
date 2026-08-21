@@ -1,0 +1,122 @@
+15.10.24 - DISTRIBUTED SYSTEMS
+
+miussing - how to quantify (numbers)
+
+overall approach
+fact : something will go wrong
+goal: survive (continue) operations despite partial failures
+about continued operations despite losing (pentagon)
+TCP - you send a package, retransmit until it is received
+
+
+basics
+fault: cause of (potential) error - memory leak, 
+error: part of system's state that might lead to feailure - out of memory
+failure: when a system can not deliver service as expected - componenet crash, service with too slow response, wrong result
+
+personal competence - not enough to only be up (available)
+didn't get response - try again
+
+fault tolerance principle:
+add servers, make server stateless (secure, end-to-end, )
+shopping basket - value compared to user, 
+
+dependable systems
+	avaiability - immediate use ("always on") for clients
+	reliability - continous operation (and avaiable), time interval
+			down 1 sec/h, mostly available, not reliable
+			correct data			
+	safety - the prevention of faults (pre-, guidelines)
+			property: nothing catastrophic happens upon failure (self driving car, nuclear power plant, pacemaker)
+	maintainability - (also) how easily a failed system can be repaired
+			goal to provide failure detection and repair automatically and transparently ((MTTR mean time to repair)(facebook down due to update)
+	security - hardening/ protection of system) 
+
+types of faults:
+transient - sporadic behaviour
+intermittent - appears several times, but not periodic
+permanent - exists permanently until failty component is removed or repaired
+failure models:
+	crash failure - system works -> system failure (system does not work anymore (at all))
+			remains stopped
+			failure - >stop (can be detected by other processes; it does not produce output
+			failure detector: detects failures (or presumes something failed)
+	omission failure - where server does not respond to request
+			system works, but does not receive a request
+			system works, but does not respond
+	timing failure - system works, but response is not received when expected; does not meet deadline
+			ethernet: two parites, it waits random hits the same, it waits again
+			heavily loaded, no guarantee for, no guarantee with timing failures.
+			server responds too late: performance failure
+			aavailability related: perceived respons time for user
+	response failure
+			incorrect response - precision problem in search engine or wrong loT sensor
+			artificial intelligencesystems and response (compliancy)
+			how to know when system says yes (explainability of AI)
+			state transition failure: wrong actions triggered (server deviates from the correct flow of control)
+	byzantine - arbitrary failure
+			system appears to work correctly, but response is not correct
+			hard problem; how to detect this behavior -> collaboration 
+			(malfunctioning loT sensor, algorithm with wrong arithmetic operation, artificial intelligence and trust, adversary)
+
+approach: masking by redundancy
+	information redundancy
+		add extra bits for detection/ recovery (hamming code, hash, RAID)
+	time redundancy
+		repeated execution
+		retransmission
+	physical redundancy
+		hardware and/or software replication (even not internally equivalent)
+TMR (triple modular redundancy) - healing
+DAG (no stifles in graph)
+	three lines running in parallel
+	healing voters - connect parallel processes
+	you can have two individual crashes on each level, but it will still work
+replication
+	common solution: throw redundancy at the solution
+	cost, trusting computer base, TCP, limited design property
+	balance
+	must determine: causality relation: fault -> error- -> failure i.e. cause of failure
+		failure model
+		SLOs (e.g. availability vs consistency requirements)
+		failure handling cost/budget (often taken for granted)
+			google stored on tape (when using backup)
+		find solution (related to cause, model, cost)
+what is the problem
+	partioned network or low latency
+	move Sivert away, still connected to network
+	hardware component problem, 
+	buggy software, unstable mnode, 
+	geo-distribution (data) problem, 
+	systems problem (e.g. use of SQL serving internet clients)
+	overloading: scalability problem
+	...?
+potential solutions
+	depending on problem(s) identified)
+		caching (performance, partitioning)
+		"upstream dissemination"
+		prefetching, precomputing
+		timers (retransmission, failure detection)
+		overlay (mesh) networks (alternative routes)
+		primary-based replication
+		...
+design for fault isolation (most unstable one, get rid of it and get a new one)
+	minimize the scope of impact trough fault isolation of (replica modules)
+	isolate part that might crash or cause problems
+	Tacoma model with continuation of applications (70 models parching the data)
+	modularization with modules that fail independently and can be repaired in isolation
+	loosely couple workload dependencies
+	geo- replication: a.g. Azure duplicates configuration or system in another region that can take over for the main configuration during an outrage
+let us architect and design together
+	functionality
+		web shopping
+		out-sourced payment
+		out-sourced item storage and distribution
+	non-functional requirements
+
+	
+			
+
+
+process resilience
+

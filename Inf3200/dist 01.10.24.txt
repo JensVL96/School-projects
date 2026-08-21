@@ -1,0 +1,82 @@
+dist 01.10.24
+
+Combine scale and fault tolerance
+cost of latency and availability (virtually nothing)
+
+try to move as much as possible to proc (proxy, cdns)
+
+stateless, stateful (essential for state that survives)
+stateful: whenever connected keep the data, receive data
+stateless: 
+
+share state adds complexity
+application data stored reliably and available in data store layer
+failure detection (how to know if something is wrong (node is crashed)
+middleware (join history from backup and last history, sync and agree of same replica)
+
+state and server?
+disadvantage (store locally, add complexity, sync processes )
+
+stateful server needs a way to assimilate state to others
+
+If we need state, how to keep it (if we can avoid state, it's easy to round-robin
+store state, fetch data. Need persistant storage (3rd or different layer)
+error recovery - hashing, etc (
+stateful is consistent
+security session state
+availability outmaneuvers consistency
+
+latency problem
+downstream distribution
+	instead of six connection taxing on the connection
+	close to you instead
+
+football match, adds latency to distribute streaming 
+	instead of direct (live)
+
+
+precopy data and distribute (important)
+give dorms to students for easier access
+
+you as user hoard files (cache)
+system knows ^^
+meant: disconnect, work from somewhere else
+send upcall, change here, end-to-end,
+don't send whole file, 
+not scalable for both data, what next, optimistic concurrency solution
+fetch data if need be
+overall les smultiple writers, concurrency control, 
+
+
+where to store the state, 
+google stateless?
+- statelees on lower levels
+- stateful from ranking
+
+
+communication state from me sent to a stateless client (REST)
+
+frequent updates leads to spike in traffic
+
+chain replication - write from one side, receive from another
+access to update ratio (reads to writes)
+if the data doesn't change a lot, immutable data - timestamp (need copy create new version)
+immutable data, data that does not need/ never changes
+both data stored in cdn - is immutable or not- organize independent or up there
+changing a document is a fraction of the bulk
+access to update schedule - relevance
+one write = only one server
+send when exceeded expectant boundary
+monitor 24 hours, after that detect active
+
+
+single atomic operation - system support
+presumably atomic, guarantee consistent 
+	requirement spec
+	number of replicas, where , how connected, admin domains for spes 
+	propogation to everybody or select group
+	timing issues (when consistent) - if it manage to turn consistent (doesn't matter time frame) - eventual consistency - 
+	leader election (if needed) - throw exception - protocal for LE - can't afford 4 interactive, need a leader, propogate changes
+	conflict resolution
+	failure detection
+	error recovery

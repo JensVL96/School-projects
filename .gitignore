@@ -1,0 +1,88 @@
+.history/
+target/
+__pycache__/
+.ipynb_checkpoints/
+*.zip
+.DS_Store
+.history/
+target/
+__pycache__/
+.ipynb_checkpoints/
+*.zip
+.DS_Store
+.~lock.*.odt#
+vendor/*.exe
+vendor/
+
+# Inf2200 local artifacts
+Inf2200/*.rar
+Inf2200/github-recovery-codes.txt
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Windows alternate stream artifacts copied as files
+*:Zone.Identifier
+
+# Python/Jupyter/log/temp
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.log
+
+# Build/output/temp
+mr_tmp/
+output.txt
+
+# IDE/system junk
+.vs/
+.obsidian/
+__MACOSX/
+.DS_Store
+~$*
+*.atsuo
+
+# Build/output/binaries
+Debug/
+Release/
+bin/
+obj/
+*.o
+*.d
+*.eep
+*.elf
+*.hex
+*.lss
+*.map
+*.srec
+*.dll
+*.pdb
+*.runtimeconfig.json
+*.deps.json
+*.nupkg
+*.snupkg
+*.x86_64
+
+# Existing ignore noise
+*:Zone.Identifier
+*Zone.Identifier
+
+# nested git repos accidentally copied into this repo
+Inf3200/src_test/.git
+Inf3201/assignment1-JensVL96/.git
+Inf3203/assignment-1/Jeley4465/a1/.git
+Inf3203/assignment-1/a1/.git
+Inf3203/assignment-1/a1_/.git
+
+# mac/windows metadata
+__MACOSX/
+._*
+~$*
+
+# nested git repos (do not track as submodules)
+Inf3200/src_test/
+Inf3201/assignment1-JensVL96/
+Inf3203/assignment-1/Jeley4465/a1/
+Inf3203/assignment-1/a1/
+Inf3203/assignment-1/a1_
+It3021/viking king.mp4

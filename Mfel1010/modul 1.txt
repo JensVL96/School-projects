@@ -1,0 +1,13 @@
+Spørsmål modul 1: "Hvilket argument for celleproduksjon stemmer ikke.
+            svar:
+                "Mitokondriene produserer ATP som er nødvendig for produksjonen av protein",
+		Dette er en riktig påstand. ATP, som produseres i mitokondriene, er den eneste energien celler kan ta i bruk, og er derfor nødvendig for proteinsyntesen. (Selma, Celler og vev del 1, 15:45)
+
+                "ru ER er ansvarlig for proteinsyntese i cellen.",
+		Dette er en feilaktig påstand. Ribosomene er ansvarlige for proteinsyntesen (Selma, Celler og vev del 1, 17:17), selv om de kan være festet til det ru ER, så er ru ER ansvarlig for produksjon og tilpasning av proteiner, ikke syntese. (Selma, Celler og vev del 1, 18:00)
+
+                "Golgi håndterer proteinene ved å forberede dem til bruk i eller ut av cellen.",
+		Dette er en riktig påstand. Golgi-apparatet er ansvarlig for å modifisere, sortere og pakke proteiner som enten blir brukt i cellen selv eller blir sendt ut av cellen. (Selma, Celler og vev del 1, 18:38)
+
+                "Aminosyrer og mRNA er byggesteinene for produksjon av protein"
+		Dette er en riktig påstand. Translasjon: Aminosyrer fungerer som byggesteiner for proteiner, mens mRNA (messenger RNA) inneholder kodene som brukes til å oversette genetisk koden til proteiner. (Selma, Celler og vev del 1, 08:54)

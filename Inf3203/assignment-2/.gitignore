@@ -1,0 +1,14 @@
+# Ignore test scripts
+client-bu.py
+src/client_test.py
+src/server_test.py
+src/test_paxos.py
+src/log-server-copy.py
+run_test.sh
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore output directories
+src/output/

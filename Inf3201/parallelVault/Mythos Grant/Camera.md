@@ -1,0 +1,1 @@
+zoom in on both players when close

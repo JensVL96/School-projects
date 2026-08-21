@@ -1,0 +1,122 @@
+security - inf3200
+
+Security is another way to deliver a dependable system
+adaptability, availability, reliability, safety, maintainability, confidentiality, integrity
+dependability -> security 
+			<-> threats, security 
+			-> security policies -> mechanisms 
+							-> implementation -> trusted computer base
+			-> principles
+							-> --- || ----
+
+authorized and unauthorized operations
+Not just the data, but the system itself
+unauthorized denial of use (availability) not talked about
+
+
+formal security policies/ approaches to achieve this (modularizing, separating, layer security model, weaknesses of system, detection against threats)
+
+cloud storage system 	- only user/ creator should be able to access storage
+			- all different components should adhere to same security policies
+
+#security mechanisms
+encryption - take meaningful text and turn into unusable text (confidential, integrity)
+authentication - Are the user who they claim to be (
+authorization - given an id, should they be allowed (they know who you are, and if they're allowed to access)
+monitoring and auditing - not active detection, perform analysis, debugging, taking measures against future attacks (what part is working correctly)
+
+#security principles
+fail safe defaults - giving access explicit permission
+open design - should be open to scrutiny and investigation, legal issues, compliance, general principle to enforce security
+separation of privilege - 
+least privilege - 
+least common mechanism - 
+
+minimize manual work
+force access control
+
+default settings, passwords, unsecure
+unconnectable until you turn network on
+architecture easy to understand from top down view
+components are often the same
+
+security at network layer (insufficient?)
+VPN, can't abstract away application logic, we can rely on different sec at lower layers
+actual logic, correctness, when unwrap netw transport, can't get away when want secure applic
+low level protocols isn't robust for every case
+
+The idea of what is . is different to separate. (before privacy)
+
+
+pirvacy
+increasingly more important topic
+generate more data, surveilane,legal framworks to protect privacy, ensure privacy is upheld
+difference privacy, confidentiality -> data invade privacy, security breach - invades privacy -> privacy brach
+privacy - right o appropriate flow of personal information
+whatever data is used later should be able to be traced back to whomever it concerns should be able to .
+mechanisms for providing and removing consent
+allow users to erase data after it has been collected
+	creates issues when used data to construct systems (data models)
+
+cryptographic principles
+symmetric and asymmetric cryptosystems
+asym - generate two corresponding keys, one private on public (secret key) - separate usage
+symmetric key - when someone has access they can enc and dec data wit hsame key
+homomorphic enc - can still do math eq on them even when enc - valid for handling
+
+cryptographic hash functions
+trapdoor function - provide arg into func to reverse hash map
+			should be able to retrieve input
+separate arg - not necessarily have derived arg
+
+
+authentication
+different from authorization/ access control
+manage limitation for what the user can do, knowing if ID is correct is a different problem (authen will solve)
+different assumptions about how they can prove themselves
+based on knowledge (password) - problem can be breached
+have id card - can be stolen
+software token - pass around - susceptible to attacks
+propriety have/ are - on person (fingerprint) - assumption can be broken
+pattern to be matched - linked to user
+
+based on assumptions that we know can be breached
+
+authenticationg two parties with shared secret key want to authen, talk ing to eachother
+symmetric shared key, enabled to distribute
+how to know when you're talking to someone that has same key - assumption typically made
+enc something -> that should prove wit hresult that they should have access to key
+
+they will not be able to generate number on their own, so they should not have it beforehand, 
+(if they can enc, and can send it kback, they should have they key, can't retrieve without having the key)
+
+Chuck tries to hack:
+optimized version - claim to be alice, send own challenge, respond with own challenge B, chuck doesn-t have key, so no solution,
+need to get a hold of the, send a new response to bob, provide the same challenge bob provided in last protocol, send back Rb, provides solution to challenge (same as what chuck wants), chuck drops second, take response they got and send back to bob for authentication
+
+
+key distribution center
+shared userbase
+alice talks to center, she wants to talk to bob, it's responsible for authenticating them
+enc with session keys, and send to both clients (KDC web, alice user, bob canvas)
+alice won't get response before bob responds to kdc as well (can be avoided, if system trusts alice)
+
+ticket - some blob of info, enc with key, not meaningful to you, pass to somebody that can use it)
+alice doesn't have option to dec, but she can use it
+alice sends id to kdc, respond by sending key to alice, alice sends key that only bob can dec, send to bob along with id)
+
+needham-schroeder protocol
+respond with operation (both parties knows an operation is used)
+replay attack - don't need to prove id, no way of relating responses to eachother
+to fix - enable to relate operation with tickets - introduce another set of challenges at the start
+	send to bob, alice can challenge kdc, receive ticket from kdc, when sending back to bob, bob can see earlier challenges and combine into one session
+	time communication, ticket expires
+
+kerberos
+ka,as - shared key (key received from service is wrapped here)
+a way of scaling out the same principles of authenticating tickets that can be seen in protocol
+
+
+access control
+
+

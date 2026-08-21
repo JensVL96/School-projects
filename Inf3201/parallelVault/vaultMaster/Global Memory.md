@@ -1,0 +1,1 @@
+accessible by all grids and used for sharing data across blocks

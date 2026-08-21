@@ -1,0 +1,126 @@
+exam note 1
+
+Distributed systems encompass a broad approach where multiple independent components work together to form a coherent system. These systems are essential for achieving high responsiveness and scalability in modern computing environmnets.
+
+Security in distributed systems often involves isolating users from each other to prevent unauthorized access and data breaches.
+Techniques such as intermediate caching are crucial for achieving high responsiveness in distributed systems.
+Distributed systems must be designed to withstand various types of failures, including hardware malfunctions, and cyber-attacks. Techniques include replication, group abstractions for communication, and the use of stateful proxies to maintain copies of data.
+
+Daily average users (DAU): is an important metric for companies and investors
+Security (TCB - trusted computing base): focus on a security model where critical security is managed by a trusted component
+
+Complexity (the transactional reliability in databases) and fault -tolerance (techniques to withstand operational failures and attacks are core principles in distributed systems
+
+
+algorithm trade offs communication vs surveillance: balancing information flow with privacy concerns
+privacy vs security: finding a middle ground is crucial
+
+privacy infringmenent issues arising from targeted advertisements
+base consistency: focus on basic availability, soft-state, and eventual consistency
+
+consistency vs performance: data copying and distribution challenges
+ease of programming vs performane
+
+security in distributed systems often involves isolating users from each other to prevent unauthorized access and data breaches
+
+techniques such as intermediate caching are crucial for achieving high responsiveness in distributed systems.
+
+Distributed systems must be designed to withstand various types of failues, including hardware malfunctions and cyber-attacks. Techniqeues include replication, group abstractions for communication, and the use of stateful proxies to maintain copies of data.
+
+
+
+
+
+GPU overview
+GPUs are highly effective for tasks involving algebra due to their parallel processing capabilities. They are extensibly used in 3d video games, neural networks, and matrix multiplications.
+GPUs contain many simple cores designed for highly parallel and specialized computations, particularly suited for simple arithmetic operations.
+
+CPU (single core)/SISD:
+	general purpose computation
+	access to i/o devices
+	contains fewer, more complex cores
+	fairly parallel but not as much as GPUs
+
+GPU/SIMD:
+	specialized for different instructions per process
+	different CPU units execute at different times
+	Threads execute the same instructions
+	performane loss occurs if threads diverge on different instructions due to incorrect branching causing 	bottlenecks
+
+GPU vs CPU:
+	GPU has more processing units than CPUs
+	GPU is designed for highly parallel tasks
+	CPU is general purpose computation with access to I/O devices
+	CPUs have fewer more complex cores than those in GPUs
+
+CUDA spesifics
+Device SM(streaming multiprocessor)
+	contains several streaming processors
+	the host sends instructions and receives results from the device
+	CUDA programs are designed to follow device CUDA abstractions
+
+memory hierarchy: GPU
+Global memory: accessible by all grids and used for sharing data across blocks
+shared memory: shared within a block and faster than accessing global memory
+local memory: local to each thread, includes their own memory and registers
+
+CUDA programming model
+Single program multiple data (SPMD):
+	write a single program execute dby all threads, each working with different data
+	threads are grouped into blocks, and each block is part of a grid.
+	blocks are scheduled on any streaming multiprocessor without a guaranteed order, and shared memory within a 	streaming multiprocessor can lead to race conditions but also improves performance
+
+	memory is allocated globally, and data is transferred to the GPU
+	the GPU is instructed via API to launch the kernel, and operations on the CPU can continue asynchronously
+	synchronization is required to fetch results, and memory must be deallocated after completion to avoid 	conflicts.
+
+	A typical workflow involves allocating a memory region, transferring data to the GPU, launching the kernel, 	and performing asynchronous operations on the CPU. 
+	After computations, synchronization is necessary to retrieve results, followed by deallocating memory to 	prevent conflicts.
+
+	Best practices: avoid synchronization mechanisms on the GPU, due to the complexities and potential for 	deadlocks, synchronization should be managed carefully and generally avoided within GPU operations.
+
+	
+
+
+
+Combining scale and fault tolerance:
+	the cost of latency and availability is virtually negligible when systems are designed to efficiently scale 	and handle faults.
+	moving as much processing as possible to proxies and CDNs can help reduce latency and improve fault 	tolerance.
+
+state management: stateless vs stateful
+stateless systems do not retain user or session information between requests, simplifying the architecture 	but 	often requiring more frequent data fetching.
+stateful systems maintain state across sessions, whih is essential for applications where user data needs 	to 	persist. This approach can add complexity due to the need for consistent state management across 	different nodes and sessions.
+
+challenges and solutions in state management:
+sharing state adds complexity but is necessary for applications that require data reliability and availability. 	Data is typically stored in a dedicated data store layer
+failure detection is critical for identifying issues such as node crashes. Middleware can be used to synchronize 	and merge data from backups and current states.
+state and server management adds complexity due to the need for synchronization processes and local storage. 	Stateful servers must assimilate state among each other effectively.
+
+practical approaches to handling state:
+state storage: if state is necessary, it should be stored in persistent storage across different layers to 	facilitate error recovery and maintain consistency.
+error recovery mechanisms: techniques like hashing are used to ensure data integrity and facilitate recovery from 	errors.
+security and session state: managing session states securely while ensuring availability often takes precedence 	over strict consistency due to latency involved in synchronization.
+
+latency and distribution challenges:
+downstream distribution: reducing the number of connections by distributing requests to servers closet to the user 	can significantly decrease latency.
+pre-copying data: important for scenarios requiring quick access to data, such as providing dormitories to students 	or streaming live events like football matches.
+
+data caching and concurrency
+user data hoarding: systems can allow users to cache or 'hoard' files locally, enabling them to work offline and 	sync changes later. This approach requires careful management of data consistency and concurrency.
+optimistic concurrency control: used when scalability is a concern. This method fetches data as needed and handles 	conflicts that arise from concurrent modifications.
+
+data storage and replication strategies
+stateless vs stateful layers: some systems, like google, operate statelessly at lower levels but manage stateful 	interactions at higher levels, such as in ranking algorithms.
+chain replication: a method where writes are processed on one side and reads form another, optimizing the read-to-	write ratio.
+immutable data: managing data that does not change frequently or ever by using timestamps to create new versions 	upon modification.
+
+system design considerations
+communication state management: even in stateless systems, the state can be communicated to clients, for example 	through RESTful APIs
+traffic and update management: frequent updates can lead to spikes in traffic, which can be managed through strategies like chain replication and monitoring update frequencies.
+
+advanced system support features
+atomic operations: ensuring operations are atomic across the system to maintain consistency.
+leader election and conflict resolution: protocols for managing leadership in distributed systems and resolving 	conflicts efficiently.
+failure detection and error recovery: essential components of system design to ensure robustness and continuity of 	service.
+
+

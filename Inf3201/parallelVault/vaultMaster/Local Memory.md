@@ -1,0 +1,1 @@
+local to each thread, includes their own memory and registers

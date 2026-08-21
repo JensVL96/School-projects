@@ -1,0 +1,26 @@
+parallel programming with Pthread 02.09.2024
+a library that allows you to create/ manage threads (schedulable set of instructions)
+
+shared virtual memory
+shared memory model
+
+Portable operating system interface (POSIX) thread
+
+process
+	main thread (execute main function in program)
+		call to Pthread library -> thread0
+		thread 1
+
+kernel layer (Linux)
+	Api (system calls) <-> C library (contains Pthreads)
+
+since the CPUs are working in parallel they won't increment values
+
+how to use: (wait for completion of all threads before exiting)
+creation
+	pthread_create()
+		pthread_join() - management/ termination
+
+orchestrate the accesses to the shared memory locations
+
+critical region (region we want to protect)

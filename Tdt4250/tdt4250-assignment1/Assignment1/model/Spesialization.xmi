@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment1:Spesialization
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:assignment1="http://www.example.org/assignment1"
+    xsi:schemaLocation="http://www.example.org/assignment1 assignment1.ecore">
+  <name>Software
+Software</name>
+  <name>Interaction Design, Game and Learning Technology</name>
+  <name>Databases and Search</name>
+  <name>Artificial Inteligence</name>
+</assignment1:Spesialization>

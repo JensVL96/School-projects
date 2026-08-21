@@ -1,0 +1,32 @@
+
+
+Task 1. Database schema
+        Describe the inf2700_orders database schema.
+
+        The inf2700_orders database schema is a database schema set up as 8 different tables,
+        all containing attributes of their own which can either be empty or not. The attribute
+        also specifies whether or not the text, integer etc ends with a NULL to mark its end.
+        Almost every table includes keys who references another table.
+
+        The customers table consists of information regarding the customers private information.
+        This includes information like names, location, phone number and credit limit.
+
+        The employees table includes their number, name, title, mail address and information
+        regarding office details.
+
+        The offices table includes location, phone number and the office identification.
+
+        The order details table include every detail for the buyer so; order number, product
+        identification, amount ordered as well as the price and the line plus some keys.
+
+        The orders table includes when the id'd order was made, required, shipped, what the status 
+        of the order is and who the buyer was as well as some comments and a key.
+
+        The payments table includes the customer, the payment amount as well as the date the
+        puchase was made with the check number and some keys.
+
+        The products table includes mostly product details like id, name, product line, 
+        scale, vendor a description and also the quantity in stock with the price plus a key.
+
+        Lastly the product lines table only has two attributes namely the product line and a
+        description for the line.

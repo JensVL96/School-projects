@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Inventory {% endblock %}
+{% block page_title %} Inventory {% endblock %}
+
+{% block content %}
+<h1>List of all ingredients</h1>
+
+{% if inventory %}
+    <p><a href="{% url 'add' %}">Add ingredient</a> | <a href="{% url 'remove' %}">Remove ingredient</a></p>
+    <ul>
+    {% for entry in inventory %}
+        <p>{{ entry.ingredient.name }} {{ entry.amount }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p><a href="{% url 'add' %}">Add ingredient</a></p>
+    <p>Inventory is empty.</p>
+{% endif %}
+{% endblock %}

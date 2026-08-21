@@ -1,0 +1,31 @@
+30.08.24
+
+Always focus on scale (intro for an architect)
+add clients, data volume
+
+good actitecture - transparency
+
+problems:	server, network, centralized algorithm, fully distributed algorithm, data
+practice: they don't train in regard to none functionality (temporal or permanent scaling) 
+		incremental growth possible (add extra resources)
+		geography
+		administrative
+		regulatory issues
+		cost (cloudification)
+
+scale out to the sky when meeting bootlenecks (black Friday)
+
+data repository
+	processes communicate though common repository
+	processes can pipelining processing
+	search engine structure relevant
+
+stateless wall of function (focused on functionality)
+
+crawler (docs) -> doc processing -> indexer -> key_n; 
+meta was bigger than content itself
+
+upstream evaluation
+
+vertical storage
+horizontal sharing

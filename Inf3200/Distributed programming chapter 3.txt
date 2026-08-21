@@ -1,0 +1,8 @@
+Distributed programming chapter 3
+
+careful point-to-point communication
+process distribution of results - broadcast
+
+MPI barrier important for safety
+
+Wednesday first ass available (first colloq, Friday)

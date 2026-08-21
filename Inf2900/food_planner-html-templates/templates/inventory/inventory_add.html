@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Ingredient{% endblock %}
+{% block page_title %} Add ingredient {% endblock %}
+
+{% if ingredient_list %}
+    <ul>
+    {% for ingredient in ingredient_list %}
+        <li><a href="{% url 'add_ingredient' ingredient.id %}">{{ ingredient.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No ingredients available.</p>
+{% endif %}

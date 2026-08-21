@@ -1,0 +1,2 @@
+cluster admin
+Jon ivar Kristiansen

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="assignment1" nsURI="platform:/resource/Assignment1/model/assignment1.ecore"
+    nsPrefix="assignment1">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="Delegates" value="http://www.eclipse.ord/acceleo/query/1.0"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Department">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllSemestersAccountedFor"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="courses" upperBound="-1"
+        eType="#//Course" eOpposite="#//Course/Department"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spesialization" upperBound="4"
+        eType="#//Spesialization" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Spesialization">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LowerLevelCourseLimit"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NumberOfCompulsoryCourses"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semester" upperBound="4"
+        eType="#//Semester" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Semester">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="season" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Year" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="courses" upperBound="-1"
+        eType="#//Course" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Course">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MeetsNecessaryCompulsoryCoursesRequirements"/>
+    </eAnnotations>
+    <eAnnotations source="1.0" references="#//%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FEcore%/@details.0">
+      <details key="MeetsNecessaryCompulsoryCoursesRequirements" value="AmountCompulsoryCourses = self.NumberOfCompulsoryCourses "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AmountCompulsoryCourses"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//Status"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="studyLevel" lowerBound="1"
+        eType="#//StudyLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Department" upperBound="-1"
+        eType="#//Department" derived="true" eOpposite="#//Department/courses"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Status">
+    <eLiterals name="Compulsory" value="1"/>
+    <eLiterals name="AtleastOne" value="2"/>
+    <eLiterals name="ElectiveCoordinated" value="3"/>
+    <eLiterals name="ElectiveNotCoordinated" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StudyLevel">
+    <eLiterals name="SecondDegree"/>
+    <eLiterals name="ThirdYearCourse" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

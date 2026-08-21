@@ -1,0 +1,93 @@
+14.10.24 - parallel lecture "parallelism simplified: Libraries and DSL
+
+OpenCL (open computing language)
+programming framework for parallel heterogeneous computing 
+write single parallel program
+executable (be able to run) on several devices
+!It stores vendors, abstract architectures, devices capabilities
+abstractions:
+	Host
+	devices
+	memory
+	generic device code (the way we are going to implement our parallel program)
+command queues managed by OpenCL
+organize computation (allows to map to ... element)
+constant memory -> impact on performance
+transposition of CUDA (generic enough to be used on any devices)
+how to implement kernel (write in c99 specification) - early C specification
+C^1 enhancement to write to kernel
+if you have many devices (you need runtime specific devices to run kernel (depending on installed, fetch the one that is available)
+when you have given runtime, probe different devices that is compatible with runtime
+workflow example:
+fill y'level with available devices
+specify which devices we are interested in.
+execution context
+communication channel to the device
+set up and start (input, output, count) - thematically the type work group size that is used for the data
+request (ideal work group size for kernel)
+communication channel is used to start and execute kernel
+perform synchro (wait for exe), collect results (in output), free memory
+
+
+
+SYCL
+built on top of OpenCL to abstract usage
+several GB to exe narrow word program
+much simpler than OpenCL
+
+
+python dask
+dask array substitute for numpy (but really using numpy)
+data structure creates task graph based on data from structure, based on single-machines using schedulers
+can assign tasks to different hardware (cluster)
+
+
+Microsoft PPL
+imperative programming model
+distributed/ shared memory
+implements some concurrent containers (don't have to synchro if using these types of containers)
+raw Task level parallelism)
+run several of them in parallel
+parallel for each spesifiy function to each of the lements
+reduction operation - using parallel reduce
+parallel sort (already implemented) specify start and end of elements to sort (in parallel)
+niche - radix sort
+regaring containers
+most used, arrays and vectors, queues, unordered map/ dicts
+without worrying about synchro, race conditions
+
+Musket DSL
+key mistake - how powerful DSL is for writing programs abstractions of complexity
+not general as it is specific (application)
+regular expression (rules)
+DSL to write your parallel program, it abstracts a lot
+better accessibility
+enhance productivity
+do not need to have a complex setup to write and exe on machine 
+algorithmic skeletons - can be complex and contain CUIDA code, openMP
+ask user to fill template
+user is not involved with implementation of complex
+simpler to write parallel program (leave everything else)
+move data between comp units (cluster of x10 machines), use to move between machines, no send or receive (reads complex template)
+
+3 major sections
+	meta information
+		information for exe
+	data structures declaration
+		specify the way you want data to be handled (replicated) - distribute over cluster without comm, lots of simplification)
+	user function declarations
+
+	main program declaration 
+		kernel implementation
+
+sumary
+general purpose programming laanguage based library
+openCL heavy library to use several kernels on many languages
+dask - transparent for user, tell how data is shaped
+PPL - 3d software, 
+
+algorithmic skeletons (not spesific to musket, broad usage)
+heavily used in parallel programs
+musket
+many libraries offer similar abstractions
+
