@@ -1,4 +1,4 @@
-# INF-3203 — Distributed Systems (UiT)
+# INF-3203 — Advanced Distributed Systems (UiT)
 
 Coursework for UiT's Distributed Systems course, co-authored with Bjørn Helge
 Kværnmo. Covers distributed computation, fault tolerance and replication,
