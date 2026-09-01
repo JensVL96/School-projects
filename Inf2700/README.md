@@ -1,19 +1,28 @@
-# INF-2700 — Databases and Reports
+# INF-2700 — Database Systems (UiT)
 
-This folder contains material from INF-2700 coursework, including assignment specifications, reports, and example SQLite database files.
+Coursework for UiT's Database Systems course, covering SQL and the internals of
+a database management system. Assignment 1 is SQL; assignments 2–3 implement
+DBMS internals in C.
 
-## What is here
-- `assignment-spec_assignment1.pdf` — assignment specification
-- `inf-2700-*.db` — example SQLite database files used in exercises
-- `inf2700/` and `dbms/` — assignment folders and supporting materials
+## Assignment 1 — SQL
 
-## How to use it
-- Read the PDF specifications first to understand the assignment requirements.
-- Use the `.db` files with `sqlite3` or a GUI SQLite browser when experimenting with the database exercises.
-- Keep reports and solution files in the relevant assignment folder so the structure stays easy to navigate.
+Schema description and querying against a SQLite orders database: documenting
+the eight-table schema (keys, foreign keys, self-references) and writing SQL
+queries, with a small C-based SQL tester harness.
 
-## Project focus
-The INF-2700 material is centered on:
-- database design and querying
-- working with SQLite databases
-- report writing and submission material
+*SQL · relational schemas · SQLite · query writing*
+
+## Assignments 2–3 — DBMS Internals in C
+
+Implementing core pieces of a database engine in C on a provided pager/schema
+framework: extending the query interpreter to handle all comparison operators
+(=, <, <=, >, >=, !=), generating arbitrary-size test tables, replacing linear
+search with binary search and benchmarking the two, comparing against a B+-tree,
+and implementing join operations.
+
+*DBMS internals · C · paging & storage · binary search · B+-trees · join
+algorithms · query interpretation · performance analysis*
+
+**Note:** several `db2700/` and `dbms/` folders are kept as development stages
+(from the handout starter code through successive versions); the most complete
+is `dbms/`.
