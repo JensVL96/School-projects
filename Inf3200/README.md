@@ -1,10 +1,21 @@
-# INF-3200 — Distributed Systems / Course notes
+# INF-3200 — Distributed Systems (UiT)
 
-Contains notes, scripts and small projects related to INF-3200 (distributed systems).
+Coursework for UiT's Distributed Systems course, building a **Chord distributed
+hash table** deployed on the university compute cluster. Covers consistent
+hashing, ring topology, finger tables, and performance measurement. Work is in
+Python; includes lecture and exam notes.
 
-Notable files:
-- `15.10.24 - DISTRIBUTED SYSTEMS.txt`, `exam note 1.txt`, `GPU.txt` — lecture/exam notes
-- `server.ipynb`, `testscript.py` — small project artifacts
+## Assignment 1 — Distributed Hash Table (Chord)
 
-Notes:
-- Some assignments and example code are in nested subfolders (e.g., `ass1/`, `assignment1B/`). Explore inside each subfolder for sources and deliverables.
+**Part A** builds up the fundamentals: HTTP-based key-value server nodes deployed
+across cluster compute nodes, with scripts to launch and test a small network.
+
+**Part B** implements the full **Chord** protocol — nodes arranged in a hash
+ring with successor/predecessor links and finger tables for O(log n) lookups,
+plus a graceful-shutdown mechanism. Includes a tester that verifies key
+storage/retrieval across the ring and throughput/scaling experiments (e.g.
+100-value runs and throughput benchmarks), with finger tables toggleable via
+config.
+
+*Chord DHT · consistent hashing · finger tables · distributed key-value store ·
+cluster deployment · throughput benchmarking · Python*
