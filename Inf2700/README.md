@@ -23,6 +23,5 @@ and implementing join operations.
 *DBMS internals · C · paging & storage · binary search · B+-trees · join
 algorithms · query interpretation · performance analysis*
 
-**Note:** several `db2700/` and `dbms/` folders are kept as development stages
-(from the handout starter code through successive versions); the most complete
-is `dbms/`.
+**Note:** several `db2700/` and `dbms/` folders are kept as development stages,
+from the handout starter code through successive versions.
