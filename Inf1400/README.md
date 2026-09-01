@@ -1,29 +1,29 @@
-# INF-1400 — Introduction to Programming
+# INF-1400 — Object-Oriented Programming (UiT)
 
-Programming assignment projects for INF-1400.
+Coursework for UiT's Object-Oriented Programming course, taught through
+Python/Pygame game projects (classes, inheritance, game loops, collision
+detection). I took the course across two attempts, and `submission-1/` and
+`submission-2/` hold the two rounds of deliverables — some projects improved on
+the second pass, others rewritten from scratch.
 
 ## Projects
 
-### Breakout
-A classic Breakout-style game where the player controls a paddle to bounce a ball and break bricks.
+**Breakout** — a classic paddle-and-ball brick-breaker, with sprites, audio,
+and menu screens. (`submission-1/breakout/`)
 
-**Location:** `breakout/inf1400-jle040-1/`
+**Boids** — a flocking simulation implementing the classic separation,
+alignment, and cohesion rules, with a GUI, tunable parameters, and an FPS
+performance study. Present in both attempts. (`submission-1/`, `submission-2/boids/`)
 
-### Boids
-A flocking simulation demonstrating boid behavior with alignment, cohesion, and separation mechanics.
+**Mayhem** — a gravity-based multiplayer spaceship game (fuel, thrust,
+shooting), designed around a UML class model. (`submission-2/mayhem/`)
 
-**Location:** `boids/`
+**Sudoku** — a Sudoku implementation. (`submission-2/sudoku/`)
 
-### Mayhem
-A game project with multiple versions exploring different implementations and design patterns.
+*Object-oriented programming · Python · Pygame · inheritance · game loops ·
+collision detection · UML design*
 
-**Location:** `mayhem/`
-
-### Sudoku
-A sudoku solver or game implementation.
-
-**Location:** `sudoku/`
-
-## Additional Materials
-
-- `exam/` — exam-related materials and solutions
+**Note:** the two submission folders are two attempts at the course, kept
+intact to show the progression — first-attempt work in `submission-1/`, the
+retake in `submission-2/`, which adds Sudoku and reworked versions of the
+earlier games.
