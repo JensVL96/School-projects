@@ -1,4 +1,4 @@
-# IT3021 — Spill+ (Game Design)
+# IT3021 — Spill+ (Game Design) (NTNU)
 
 Coursework for NTNU's IT3021 *Spill+* ("Game+"), a course on game design
 principles. Deliverables are game concepts pitched through scripted media and
