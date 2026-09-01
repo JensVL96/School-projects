@@ -1,12 +1,18 @@
-# MFEL-1010 — Course materials
+# MFEL-1010 — Medicine for Non-Medical Students (NTNU)
 
-This folder contains the MFEL-1010 module materials, including the module documents and template files used throughout the course.
+A general introduction to medicine for non-medical students: anatomy and
+physiology from cell to organ, plus common diseases. My coursework here is a set
+of written answers across ten modules, worked through with references to the
+lecture material.
 
-## What this folder is for
-The folder stores the module PDFs and editable documents for the course content.
+## Modules
 
-## Course focus
-The material in this folder covers:
-- module notes and handouts
-- editable course documents
-- supporting template files
+Ten module assignments (`modul 1`–`modul 10`), each answering the module's
+questions in Norwegian with cited reasoning. Topics progress through the body's
+systems — cell biology and tissues, the respiratory system (e.g. surfactant and
+the alveoli), and further organ systems — explaining why each answer is correct
+or incorrect with references to the course lectures.
+
+*Anatomy · physiology · cell biology · organ systems · medical terminology*
+
+**Note:** each module is provided as both an editable document and a PDF.
